@@ -96,7 +96,7 @@ export interface INewCustomer extends Document {
     notes: string,
     invoiceTermsAndContions: string,
     customerCode: string,
-    // createdBy: string
+    createdByAdmin: any
 }
 
 const newCustomer = new Schema<INewCustomer>({
@@ -398,8 +398,7 @@ const newCustomer = new Schema<INewCustomer>({
         type: String,
         required: false
     },
-    // createdBy: { ref: "users", type: mongoose.Schema.Types.ObjectId },
-
+    createdByAdmin: { ref: "users", type: mongoose.Schema.Types.ObjectId },
 }, { timestamps: true })
 
 

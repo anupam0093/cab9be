@@ -12,14 +12,14 @@ export const isAdmin = (req: Request & { user: any }, res: Response, next: NextF
   } else {
     token = cookieToken
   }
-  console.log("TOKEN", { token })
+  // console.log("TOKEN", { token })
 
   if (!token) {
     return res.status(401).json({ message: ResponseMessages.AUTH_TOKEN_NOT_FOUND });
   }
   try {
     const verify = verifyJWT(token);
-    console.log({ verify })
+    // console.log({ verify })
     if (!verify) {
       return res.status(401).json({ message: ResponseMessages.AUTH_TOKEN_NOT_FOUND });
     }
@@ -93,6 +93,9 @@ export const isVerified = (role: any) => (req: Request & { user: any }, res: Res
   console.log({ decoded })
   !role.includes(decoded?.user?.role)
     ? res.status(401).json({ success: false, message: ResponseMessages.ACCESS_DENIED })
-    : next();
-  req.user = decoded?.user
+    : req.user = decoded?.user;
+  next();
+
 };
+
+

@@ -8,7 +8,6 @@ export interface IUser extends Document {
   password: string;
   role: string;
   isRegistered: boolean;
-  customers: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -53,7 +52,6 @@ const userSchema = new Schema<IUser>({
     type: Boolean,
     default: false,
   },
-  customers: [{ type: String }]
 },
   { timestamps: true }
 )

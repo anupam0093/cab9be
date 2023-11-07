@@ -23,7 +23,7 @@ export const verifyJWT = (token: string) => {
 
 //DECODE JWT
 export const decodeJWT = (token: string) => {
-  console.log("Decoded token", jwt.decode(token))
+  // console.log("Decoded token", jwt.decode(token))
   return jwt.decode(token);
 };
 

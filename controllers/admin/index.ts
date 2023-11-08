@@ -9,11 +9,12 @@ import { registerAdminService } from "../../services/admin";
 // ADMIN SIGNUP CONTROLLER 
 export const handleAdminController = async (req: Request, res: Response) => {
     try {
-        const { name, email, password, phone, } = req.body;
+        const { name, email, password, phone, confirmPassword} = req.body;
         const user = await registerAdminService(
             name,
             email,
             password,
+            confirmPassword,
             phone,
             ROLE.admin
         );

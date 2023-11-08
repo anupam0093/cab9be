@@ -10,11 +10,12 @@ import { signJWT } from "../../services/auth-service";
 // SUPERADMIN SIGNUP CONTROLLER
 export const handleSuperadminController = async (req: Request, res: Response) => {
     try {
-        const { name, email, password, phone, } = req.body;
+        const { name, email, password, phone, confirmPassword } = req.body;
         const user = await registerAdminService(
             name,
             email,
             password,
+            confirmPassword,
             phone,
             ROLE.superadmin
         );

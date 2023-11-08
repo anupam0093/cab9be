@@ -17,19 +17,13 @@ ResponseMessages.CUSTOMER_PHONE = 'Account already exists with this customer pho
 ResponseMessages.GST_NUMBER = 'Found duplicate gst nubmer';
 ResponseMessages.DUPLICATE_ENTERIES = 'Found duplicate enteries';
 ResponseMessages.CUSTOMER_PAN_NUMBER = 'Account already exists with this customer pan';
-
-
-
-
-
-
-
-
-
-
-
-
+ResponseMessages.PASSWORDS_DO_NOT_MATCH = 'Passwords do not match';
 ResponseMessages.ID_REQUIRED = "Invalid Id provided.";
+ResponseMessages.DELETED_CUSTOMER = "Deleted customer successfully.";
+ResponseMessages.CUSTOMER = "Customer";
+ResponseMessages.CUSTOMERS = "Customers";
+
+
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';
 ResponseMessages.EMAIL_USERNAME_REQUIRED = 'Email or username is required';
 ResponseMessages.PASSWORD_REQUIRED = 'Password is required';
@@ -169,7 +163,6 @@ ResponseMessages.ACCOUNT_ALREADY_ACTIVE = 'Account already active';
 ResponseMessages.ACCOUNT_SUSPENDED = 'Account suspended';
 ResponseMessages.ACCOUNT_DEACTIVATED = 'Account deactivated';
 ResponseMessages.USERAME_NOT_AVAILABLE = 'Username not available';
-ResponseMessages.PASSWORDS_DO_NOT_MATCH = 'Passwords do not match';
 ResponseMessages.EMAIL_ALREADY_USED = 'Email already used';
 ResponseMessages.USERNAME_ALREADY_USED = 'Username already used';
 ResponseMessages.ACCOUNT_NOT_FOUND = 'Account not found';

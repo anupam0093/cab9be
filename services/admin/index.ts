@@ -7,11 +7,11 @@ export const registerAdminService = async (
     name: string,
     email: string,
     password: string,
+    confirmPassword: string,
     phone: string,
     role: string,
 ) => {
 
-    // VALIDATE THE EMAIL
     const user = await users.findOne({ email });
     if (user) throw new Error(ResponseMessages?.ACCOUNT_ALREADY_EXISTS_WITH_EMAIL);
 
@@ -19,7 +19,10 @@ export const registerAdminService = async (
     const userPhone = await users.findOne({ phone });
     if (userPhone) throw new Error(ResponseMessages?.ACCOUNT_ALREADY_EXISTS_WITH_PHONE);
 
-    if (!name || !email || !password || !phone)
+    // VALIDATE PASSWORD
+    if (password !== confirmPassword) throw new Error(ResponseMessages?.PASSWORDS_DO_NOT_MATCH)
+
+    if (!name || !email || !password || !phone || !confirmPassword)
         throw new Error(ResponseMessages?.FIELD_REQUIRED);
 
     // GET THE HASHED PASSWORD 
@@ -30,7 +33,8 @@ export const registerAdminService = async (
         phone,
         role,
         isRegistered: true,
-        password: hashedPassword
+        password: hashedPassword,
+        confirmPassword: hashedPassword
     }
 
     const newUser = new users({

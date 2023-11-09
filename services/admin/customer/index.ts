@@ -2,6 +2,7 @@
 import { CustomerRequest } from "../../../types/customer";
 import newCustomer from "../../../models/customer"
 import { ResponseMessages } from "../../../contants/response";
+import File from "../../../models/file";
 
 
 

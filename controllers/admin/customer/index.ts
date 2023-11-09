@@ -72,7 +72,12 @@ export const getAllCustomerController = async (req: Request, res: Response) => {
 export const handleFileController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
-        const customer = await Customer.findOne(loggedInUser?.id).select({ _id: 1 })
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const customer = await Customer.findOne({ createdByAdmin: id }).select({ id: 1 })
+        console.log({ customer })
+
         const { name } = req.body;
         if (!name) {
             res.status(400).json({ success: false, message: ResponseMessages?.FIELD_REQUIRED })
@@ -84,10 +89,13 @@ export const handleFileController = async (req: Request, res: Response) => {
 
         const customers = [{
             name: name,
-            image: `http://localhost:8080/customer/${req.file.filename}`,
-            createdByCustomer: customer
+            image: `http://localhost:8080/customer/${req.file.filename}`
         }]
-        const savedCustomers = await CustomerArrayModel.create({ customers });
+
+        const savedCustomers = await CustomerArrayModel.create({
+            createdByCustomerId: customer,
+            customers
+        });
         return res.status(201).json({ message: 'Customers saved successfully', savedCustomers });
     } catch (error) {
         res.status(500).send({ error: 'Internal Server Error! Try again, please!' })

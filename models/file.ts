@@ -5,28 +5,49 @@ const mongoose = require('mongoose');
 export interface Customer extends Document {
     name: string;
     image: string;
-    createdByCustomer: string,
 }
 
-const customerSchema = new Schema<Customer>({
-    name: {
-        type: String,
-        required: true,
-    },
-    image: {
-        type: String,
-        required: true,
-    },
-    createdByCustomer: { ref: "customers", type: mongoose.Schema.Types.ObjectId },
-}, { timestamps: true });
+interface CustomerWithCreator extends Document {
+    createdByCustomerId: string;
+    customers: Customer[];
+}
 
-const customerArraySchema = new Schema({
-    customers: {
-        type: [customerSchema],
-        required: true,
-    },
+const customerSchema = new Schema<CustomerWithCreator>({
+    createdByCustomerId: { ref: "customers", type: mongoose.Schema.Types.ObjectId },
+    customers: [
+        {
+            name: {
+                type: String,
+                required: true,
+            },
+            image: {
+                type: String,
+                required: true,
+            },
+        },
+    ],
 });
 
-const CustomerArrayModel = model('CustomerFiles', customerArraySchema);
+// const customerSchema = new Schema<Customer>({
+//     name: {
+//         type: String,
+//         required: true,
+//     },
+//     image: {
+//         type: String,
+//         required: true,
+//     },
+//     createdByCustomer: { ref: "customers", type: mongoose.Schema.Types.ObjectId },
+// }, { timestamps: true });
 
-export default CustomerArrayModel;
+// const customerArraySchema = new Schema({
+//     customers: {
+//         type: [customerSchema],
+//         required: true,
+//     },
+// });
+
+const CustomerModel = model<CustomerWithCreator>('CustomerFiles', customerSchema);
+// const CustomerArrayModel = model('CustomerFiles', customerArraySchema);
+
+export default CustomerModel;

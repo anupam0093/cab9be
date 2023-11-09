@@ -3,15 +3,8 @@ import { decodeJWT, verifyJWT } from "../services/auth-service";
 import { Request, Response, NextFunction } from "express"
 
 export const isAdmin = (req: Request & { user: any }, res: Response, next: NextFunction) => {
-  const authToken = req.headers["authorization"]?.split(" ")[1];
-  const cookieToken = req?.cookies?.access_token;
+  const token = req.headers["authorization"]?.split(" ")[1];
 
-  let token;
-  if (authToken) {
-    token = authToken
-  } else {
-    token = cookieToken
-  }
   // console.log("TOKEN", { token })
 
   if (!token) {
@@ -70,15 +63,15 @@ export const isUser = (req: Request & { user: any }, res: Response, next: NextFu
 
 
 export const isVerified = (role: any) => (req: Request & { user: any }, res: Response, next: NextFunction) => {
-  const authToken = req.headers["authorization"]?.split(" ")[1];
-  const cookieToken = req?.cookies?.access_token;
+  const token = req.headers["authorization"]?.split(" ")[1];
+  // const cookieToken = req?.cookies?.access_token;
 
-  let token;
-  if (authToken) {
-    token = authToken
-  } else {
-    token = cookieToken
-  }
+  // let token;
+  // if (authToken) {
+  //   token = authToken
+  // } else {
+  //   token = cookieToken
+  // }
   console.log("TOKEN", { token })
   if (!token) {
     return res.status(401).json({ success: false, message: ResponseMessages.AUTH_TOKEN_NOT_FOUND });

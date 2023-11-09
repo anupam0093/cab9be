@@ -17,7 +17,7 @@ router.delete("/customer/:id", isVerified([ROLE.admin]), deleteCustomerByIdContr
 router.get("/customer", isVerified([ROLE.admin]), getAllCustomerController)
 
 
-router.post("/customer-file", upload.single("image"), handleFileController);
+router.post("/customer-file", upload.single("image"), isVerified([ROLE.admin]), handleFileController);
 
 
 export default router;

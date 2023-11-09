@@ -22,6 +22,8 @@ ResponseMessages.ID_REQUIRED = "Invalid Id provided.";
 ResponseMessages.DELETED_CUSTOMER = "Deleted customer successfully.";
 ResponseMessages.CUSTOMER = "Customer";
 ResponseMessages.CUSTOMERS = "Customers";
+ResponseMessages.IMAGE = "IMAGE is required";
+ResponseMessages.INTERNAL_SERVER_ERROE = "Internal server error."
 
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';

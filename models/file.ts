@@ -1,36 +1,32 @@
-import { model, Schema, Document } from "mongoose";
+import { Document, Schema, model } from 'mongoose';
 const mongoose = require('mongoose');
 
 
-export interface IMultipleFile extends Document {
-    customer: [
-        {
-            name: string,
-            file: string
-        },
-    ],
-    createdByCustomer: string
+export interface Customer extends Document {
+    name: string;
+    image: string;
+    createdByCustomer: string,
 }
 
-
-const mulitipleFileSchema = new Schema<IMultipleFile>({
-    customer: [
-        {
-
-            name: {
-                type: String,
-                required: false,
-            },
-            file: {
-                type: String,
-                required: false
-            }
-
-        },
-    ],
+const customerSchema = new Schema<Customer>({
+    name: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
     createdByCustomer: { ref: "customers", type: mongoose.Schema.Types.ObjectId },
+}, { timestamps: true });
+
+const customerArraySchema = new Schema({
+    customers: {
+        type: [customerSchema],
+        required: true,
+    },
 });
 
-export default model<IMultipleFile>("files", mulitipleFileSchema)
+const CustomerArrayModel = model('CustomerFiles', customerArraySchema);
 
-
+export default CustomerArrayModel;

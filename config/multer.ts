@@ -10,13 +10,11 @@ if (!fs.existsSync(uploadPath)) {
 }
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, uploadPath); // use ./public for herokuWeb and /tmp for Vercel
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname);
-    },
-});
+    destination: './upload/images',
+    filename: (req: Request, file: any, cb: any) => {
+        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+    }
+})
 
 const fileFilter = function (
     req: Request,

@@ -1,14 +1,11 @@
 import { isValidObjectId } from "mongoose";
 import { ResponseMessages } from "../../../contants/response";
-import multipleFileUpload, { customerService, deleteCustomerByIdService, getAllCustomerService, getCustomerByIdService } from "../../../services/admin/customer";
+import { customerService, deleteCustomerByIdService, getAllCustomerService, getCustomerByIdService } from "../../../services/admin/customer";
 import { CustomerRequest } from "../../../types/customer";
 import { Request, Response } from "express"
 import ROLE from "../../../config/roles";
-import newCustomer from "../../../models/customer"
-import mongoose from "mongoose";
-import Files from "../../../models/file";
-import { resizeImageAndUpload } from "../../../services/admin/customer/image-service";
-
+import CustomerArrayModel from "../../../models/file"
+import Customer from "../../../models/customer";
 
 // --------------------------------- CUSTOMER CONTROLLER --------------------------------------- 
 export const handleNewCustomer = async (req: Request, res: Response) => {
@@ -72,21 +69,49 @@ export const getAllCustomerController = async (req: Request, res: Response) => {
     }
 }
 
-export const UploadMutipleImageController = async (req: Request, res: Response) => {
+export const handleFileController = async (req: Request, res: Response) => {
     try {
-        const { name, price, des } = req.body;
-        if (!name || !price || !des) {
-            res.send(400).send("all fields are required {name,price,dec}")
+        const loggedInUser = req.user
+        const customer = await Customer.findOne(loggedInUser?.id).select({ _id: 1 })
+        const { name } = req.body;
+        if (!name) {
+            res.status(400).json({ success: false, message: ResponseMessages?.FIELD_REQUIRED })
         }
-        const payload = {
-            name, price, des
+
+        if (req.file == undefined) {
+            return res.status(400).send({ message: ResponseMessages.IMAGE });
         }
-        // const uploadbeds = await multipleFileUpload(req.files, payload);
-        // res.status(200).send(uploadbeds);
-    } catch (error: any) {
-        res.status(400).json({ error: error.message });
+
+        const customers = [{
+            name: name,
+            image: `http://localhost:8080/customer/${req.file.filename}`,
+            createdByCustomer: customer
+        }]
+        const savedCustomers = await CustomerArrayModel.create({ customers });
+        return res.status(201).json({ message: 'Customers saved successfully', savedCustomers });
+    } catch (error) {
+        res.status(500).send({ error: 'Internal Server Error! Try again, please!' })
     }
 }
+
+
+// router.post("/course/image-upload", upload.single("image"), async (req, res) => {
+//     try {
+//         if (!req.file) {
+//             return res.status(400).send({
+//                 success: false,
+//                 message: "IMAGE is required",
+//             });
+//         }
+//         const imageUploadUrl = await resizeImageAndUpload(req.file, "image");
+//         console.log({ imageUploadUrl })
+
+//         res.send(imageUploadUrl);
+//     } catch (error) {
+//         res.status(500).send(error);
+//     }
+// });
+
 
 
 

@@ -1,6 +1,6 @@
 import "dotenv/config";
 import dotenv from "dotenv";
-import express, { Express } from "express";
+import express, { Express, Request } from "express";
 import { createServer } from "http";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
 import rootEndPoint from "./config/endpoint";
-
 
 mongoose.set("strictQuery", false);
 
@@ -48,6 +47,9 @@ app.use(
   })
 );
 
+
+app.use('/customer', express.static('upload/images'));
+
 //ROUTES
 app.get("/", (req, res) => {
   res.status(200).json({ name: "Api Worked Fine" });
@@ -68,6 +70,10 @@ const routes = [
 routes.forEach(({ path, func }) => {
   app.use(path, func);
 });
+
+
+
+
 
 
 

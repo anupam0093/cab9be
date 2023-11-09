@@ -2,7 +2,7 @@ import { Router } from "express";
 import { isVerified } from "../../middlewares/utils";
 import ROLE from "../../config/roles";
 import { handleAdminController } from "../../controllers/admin";
-import { UploadMutipleImageController, deleteCustomerByIdController, getAllCustomerController, getCustomerByIdController, handleNewCustomer } from "../../controllers/admin/customer";
+import { deleteCustomerByIdController, getAllCustomerController, getCustomerByIdController, handleNewCustomer, handleFileController } from "../../controllers/admin/customer";
 import upload from "../../config/multer";
 const router = Router();
 
@@ -16,16 +16,8 @@ router.get("/customer/:id", isVerified([ROLE.admin]), getCustomerByIdController)
 router.delete("/customer/:id", isVerified([ROLE.admin]), deleteCustomerByIdController)
 router.get("/customer", isVerified([ROLE.admin]), getAllCustomerController)
 
-router.post('/multipleFiles', upload.array('files'), UploadMutipleImageController);
 
-
-
-
-
-
-
-
-
+router.post("/customer-file", upload.single("image"), handleFileController);
 
 
 export default router;

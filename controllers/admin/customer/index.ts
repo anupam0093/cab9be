@@ -15,10 +15,9 @@ export const handleNewCustomer = async (req: Request, res: Response) => {
         if (!customerData?.name || !customerData?.email || !customerData?.phone || !customerData?.pan || !customerData?.gstType) throw new Error(ResponseMessages?.FIELD_REQUIRED)
         const response = await customerService(customerData, userId);
         console.log("response", { response })
-        res.clearCookie("access_token");
         res.json({ message: ResponseMessages?.CREATED_CUSTOMER, data: response });
     } catch (error: any) {
-        res.status(500).json({ success: false, message: error.message })
+        res.status(500).json({ success: false, message: ResponseMessages.INTERNAL_SERVER_ERROR })
     }
 }
 
@@ -30,7 +29,6 @@ export const getCustomerByIdController = async (req: Request, res: Response) => 
             if (!id || !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
-            res.clearCookie("access_token");
             const response = await getCustomerByIdService(req.params.id);
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMER, data: response });
         }
@@ -48,11 +46,10 @@ export const deleteCustomerByIdController = async (req: Request, res: Response) 
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const response = await deleteCustomerByIdService(req.params.id)
-            res.clearCookie("access_token");
             res.status(200).send({ success: true, message: ResponseMessages?.DELETED_CUSTOMER, data: response });
         }
     } catch (error: any) {
-        res.status(400).send({ error: error.message });
+        res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
     }
 }
 
@@ -65,7 +62,35 @@ export const getAllCustomerController = async (req: Request, res: Response) => {
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMERS, data: response });
         }
     } catch (error: any) {
-        res.status(400).send({ error: error.message });
+        res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
+    }
+}
+
+export const handleUpdateCustomerController = async (req: Request, res: Response) => {
+    try {
+        const loggedInUser = req.user
+        const updatedCustomerData: CustomerRequest = req.body;
+        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+            const id = req.params
+            if (!id && !isValidObjectId(id)) {
+                res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
+            }
+            const customerId = req.params.id;
+            const updatedCustomer = await Customer.findByIdAndUpdate(
+                customerId,
+                updatedCustomerData,
+                { new: true }
+            );
+
+            if (!updatedCustomer) {
+                res.status(404).json({ error: ResponseMessages.CUSTOMER_NOT_FOUND });
+                return;
+            }
+            res.status(200).json(updatedCustomer);
+        }
+
+    } catch (error: any) {
+        res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
     }
 }
 
@@ -98,27 +123,10 @@ export const handleFileController = async (req: Request, res: Response) => {
         });
         return res.status(201).json({ message: 'Customers saved successfully', savedCustomers });
     } catch (error) {
-        res.status(500).send({ error: 'Internal Server Error! Try again, please!' })
+        res.status(500).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR })
     }
 }
 
-
-// router.post("/course/image-upload", upload.single("image"), async (req, res) => {
-//     try {
-//         if (!req.file) {
-//             return res.status(400).send({
-//                 success: false,
-//                 message: "IMAGE is required",
-//             });
-//         }
-//         const imageUploadUrl = await resizeImageAndUpload(req.file, "image");
-//         console.log({ imageUploadUrl })
-
-//         res.send(imageUploadUrl);
-//     } catch (error) {
-//         res.status(500).send(error);
-//     }
-// });
 
 
 

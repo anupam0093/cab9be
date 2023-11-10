@@ -23,7 +23,8 @@ ResponseMessages.DELETED_CUSTOMER = "Deleted customer successfully.";
 ResponseMessages.CUSTOMER = "Customer";
 ResponseMessages.CUSTOMERS = "Customers";
 ResponseMessages.IMAGE = "IMAGE is required";
-ResponseMessages.INTERNAL_SERVER_ERROE = "Internal server error."
+ResponseMessages.INTERNAL_SERVER_ERROR = "Internal Server Error! Try again, please!."
+ResponseMessages.CUSTOMER_NOT_FOUND = "Customer not found"
 
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';

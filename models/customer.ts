@@ -35,8 +35,8 @@ export interface INewCustomer extends Document {
         state: string,
         useBillingNameOnInvoice: string,
         useBillingNameInTallyExport: string
-
     }
+
     bookingDutiesSettings: {
         citiesToAddBooking: [{
             name: string
@@ -54,10 +54,11 @@ export interface INewCustomer extends Document {
             name: string
         }]
         minimumGarageStart: [{
+            name: string
 
         }],
         minimumGarageEnd: [{
-
+            name: string
         }],
         additionalOptions: {
             option1: string;
@@ -70,33 +71,33 @@ export interface INewCustomer extends Document {
         network: {
             option: string
         }
-
     },
 
-    applicableTaxes: [
-        taxes: {
-            type: string,
-            notAbleToCharge: boolean,
-        },
-    ],
-    applicableInterstateTaxes: [
-        taxes: {
-            type: string,
-            notAbleToCharge: boolean,
-        },
-    ],
-
-    driverAllowanceSettings: [
-        driver: {
+    applicableTaxAndDriverAllowances: {
+        applicableTaxes: [{
+            taxType: string,
+            notAbleToCharge: boolean
+        }],
+        applicableInterstateTaxes: [{
+            taxType: string,
+            notAbleToCharge: boolean
+        }],
+        driverAllowanceSettings: [{
             name: string,
             earlyTime: string,
             lateTime: string,
+        }]
+    },
+    files: [
+        {
+            fileName: string,
+            fileUrl: string
         }
     ],
     notes: string,
     invoiceTermsAndContions: string,
     customerCode: string,
-    createdByAdmin: any
+    createdByAdmin: string
 }
 
 const newCustomer = new Schema<INewCustomer>({
@@ -257,6 +258,51 @@ const newCustomer = new Schema<INewCustomer>({
         },
     },
 
+    applicableTaxAndDriverAllowances: {
+        applicableTaxes: [
+            {
+                taxType: {
+                    type: String,
+                    required: false,
+                },
+                notAbleToCharge: {
+                    type: Boolean,
+                    required: false
+                }
+            },
+        ],
+        applicableInterstateTaxes: [
+            {
+                taxType: {
+                    type: String,
+                    required: false,
+                },
+                notAbleToCharge: {
+                    type: Boolean,
+                    required: false
+                }
+            },
+        ],
+        driverAllowanceSettings: [
+            {
+                name: {
+                    type: String,
+                    required: false,
+                },
+                earlyTime: {
+                    type: String,
+                    required: false
+                },
+                lateTime: {
+                    type: String,
+                    required: false
+                }
+            },
+        ],
+
+    },
+
+
     bookingDutiesSettings: {
         citiesToAddBooking: [
             {
@@ -349,43 +395,18 @@ const newCustomer = new Schema<INewCustomer>({
             }
         }
     },
-
-    applicableTaxes: [
+    files: [
         {
-            taxes: {
+            fileName: {
                 type: String,
                 required: false,
-            }
-        },
-    ],
-    applicableInterstateTaxes: [
-        {
-            taxes: {
+            },
+            fileUrl: {
                 type: String,
                 required: false,
-            }
+            },
         },
     ],
-    driverAllowanceSettings: [
-        {
-            drver: {
-                name: {
-                    type: String,
-                    required: false,
-                },
-                earlyTime: {
-                    type: String,
-                    required: false,
-                },
-                lateTime: {
-                    type: String,
-                    required: false,
-                }
-
-            }
-        },
-    ],
-
     notes: {
         type: String,
         required: false,

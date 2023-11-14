@@ -26,6 +26,9 @@ ResponseMessages.IMAGE = "IMAGE is required";
 ResponseMessages.INTERNAL_SERVER_ERROR = "Internal Server Error! Try again, please!."
 ResponseMessages.CUSTOMER_NOT_FOUND = "Customer not found"
 
+ResponseMessages.CREATED_DRIVER = 'Driver created successfully';
+
+
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';
 ResponseMessages.EMAIL_USERNAME_REQUIRED = 'Email or username is required';

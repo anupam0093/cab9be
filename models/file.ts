@@ -47,7 +47,7 @@ const customerSchema = new Schema<CustomerWithCreator>({
 //     },
 // });
 
-const CustomerModel = model<CustomerWithCreator>('CustomerFiles', customerSchema);
+const CustomerModel = model<CustomerWithCreator>('files', customerSchema);
 // const CustomerArrayModel = model('CustomerFiles', customerArraySchema);
 
 export default CustomerModel;

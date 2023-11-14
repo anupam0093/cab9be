@@ -114,9 +114,10 @@ export const handleFileController = async (req: Request, res: Response) => {
 
         const customers = [{
             name: name,
-            image: `http://localhost:8080/customer/${req.file.filename}`
+            image: `${process.env.BASE_URL}/customer/${req.file.filename}`
         }]
 
+        console.log({ customers })
         const savedCustomers = await CustomerArrayModel.create({
             createdByCustomerId: customer,
             customers

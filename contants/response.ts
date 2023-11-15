@@ -27,6 +27,8 @@ ResponseMessages.INTERNAL_SERVER_ERROR = "Internal Server Error! Try again, plea
 ResponseMessages.CUSTOMER_NOT_FOUND = "Customer not found"
 
 ResponseMessages.CREATED_DRIVER = 'Driver created successfully';
+ResponseMessages.DRIVER = "Driver";
+ResponseMessages.DRIVERS = "Drivers";
 
 
 

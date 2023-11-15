@@ -68,6 +68,7 @@ export interface INewDriver extends Document {
     ],
     additionalInfo: string,
     driverCode: string,
+    createdByAdmin: string
 }
 
 const newDriver = new Schema<INewDriver>({
@@ -272,7 +273,8 @@ const newDriver = new Schema<INewDriver>({
     driverCode: {
         type: String,
         required: false
-    }
+    },
+    createdByAdmin: { ref: "users", type: mongoose.Schema.Types.ObjectId },
 }, { timestamps: true })
 
 export default model<INewDriver>("drivers", newDriver);

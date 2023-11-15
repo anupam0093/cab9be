@@ -166,40 +166,40 @@ export interface DriverDetails {
 };
 
 // Example Usage:
-const employee: DriverDetails = {
-    name: "John Doe",
-    phone: "9876543210",
-    alternatePhone: "9876543211",
-    pan: "ABCDE1234F",
-    aadharCardNumber: "123456789012",
-    birthdate: "1990-01-01",
-    joiningDate: "2022-01-01",
-    driverAddress: [{ type: "Home", address: "123 Main Street" }],
-    salaryPerMonth: "5000",
-    dailyWages: "100",
-    branches: "Branch A",
-    dailyWorkingHours: "8",
-    workingHours: { start: "09:00 AM", end: "05:00 PM" },
-    allowances: {
-        dailyAllowance: "50",
-        overTimePerHour: "10",
-        outstationAllowancePerDay: "100",
-        outstationOvernightAllowance: "150",
-        sundayAllowance: "20",
-        earlyStartAllowance: "30",
-        nightAllowance: "40",
-        extraDutyAllowance: { secondDuty: "20", thirdDuty: "30", fourthDupt: "40", fifthDuty: "50" },
-    },
-    driverDeductions: [{ name: "Deduction A", amount: false }],
-    licenseInformation: { number: "License123", validUpto: "2023-01-01" },
-    police: { displayCardNumber: "Police123", displayCardExpiryDate: "2023-01-01", verificationNumber: "Verify123", verificationExpiryDate: "2023-01-01" },
-    badge: { badgeNumber: "Badge123", badgeExpiryDate: "2023-01-01" },
-    files: [{ fileName: "File A", fileUrl: "https://example.com/fileA" }],
-    additionalInfo: "Additional info",
-    driverCode: "DriverCode123",
-};
+// const employee: DriverDetails = {
+//     name: "John Doe",
+//     phone: "9876543210",
+//     alternatePhone: "9876543211",
+//     pan: "ABCDE1234F",
+//     aadharCardNumber: "123456789012",
+//     birthdate: "1990-01-01",
+//     joiningDate: "2022-01-01",
+//     driverAddress: [{ type: "Home", address: "123 Main Street" }],
+//     salaryPerMonth: "5000",
+//     dailyWages: "100",
+//     branches: "Branch A",
+//     dailyWorkingHours: "8",
+//     workingHours: { start: "09:00 AM", end: "05:00 PM" },
+//     allowances: {
+//         dailyAllowance: "50",
+//         overTimePerHour: "10",
+//         outstationAllowancePerDay: "100",
+//         outstationOvernightAllowance: "150",
+//         sundayAllowance: "20",
+//         earlyStartAllowance: "30",
+//         nightAllowance: "40",
+//         extraDutyAllowance: { secondDuty: "20", thirdDuty: "30", fourthDupt: "40", fifthDuty: "50" },
+//     },
+//     driverDeductions: [{ name: "Deduction A", amount: false }],
+//     licenseInformation: { number: "License123", validUpto: "2023-01-01" },
+//     police: { displayCardNumber: "Police123", displayCardExpiryDate: "2023-01-01", verificationNumber: "Verify123", verificationExpiryDate: "2023-01-01" },
+//     badge: { badgeNumber: "Badge123", badgeExpiryDate: "2023-01-01" },
+//     files: [{ fileName: "File A", fileUrl: "https://example.com/fileA" }],
+//     additionalInfo: "Additional info",
+//     driverCode: "DriverCode123",
+// };
 
-console.log(employee);
+// console.log(employee);
 
 
 

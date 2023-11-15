@@ -13,3 +13,9 @@ export const driverService = async (driverData: DriverDetails, userId: string) =
         throw new Error(ResponseMessages?.DUPLICATE_ENTERIES)
     }
 }
+
+
+export const getDriverByIdService = async (id: string) => {
+    const response = await driver.findById(id).select({ createdByAdmin: 0 });
+    return response;
+}

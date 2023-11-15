@@ -4,7 +4,7 @@ import ROLE from "../../config/roles";
 import { handleAdminController } from "../../controllers/admin";
 import { deleteCustomerByIdController, getAllCustomerController, getCustomerByIdController, handleNewCustomer, handleFileController, handleUpdateCustomerController } from "../../controllers/admin/customer";
 import upload from "../../config/multer";
-import { handleNewDriver } from "../../controllers/admin/driver";
+import { getDriverByIdController, handleNewDriver } from "../../controllers/admin/driver";
 const router = Router();
 
 // --------------------------------- ADMIN ROUTES --------------------------------------- 
@@ -22,6 +22,7 @@ router.post("/customer-file", upload.single("image"), isVerified([ROLE.admin]), 
 
 // --------------------------------- DRIVER ROUTES ------------------------------------ 
 router.post("/new-driver", isVerified([ROLE.admin]), handleNewDriver);
+router.get("/driver/:id", isVerified([ROLE.admin]), getDriverByIdController)
 
 
 

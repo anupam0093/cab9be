@@ -13,6 +13,20 @@ export const handleNewCustomer = async (req: Request, res: Response) => {
         const userId = req.user?.id;
         const customerData: CustomerRequest = req.body;
         if (!customerData?.name || !customerData?.email || !customerData?.phone || !customerData?.pan || !customerData?.gstType) throw new Error(ResponseMessages?.FIELD_REQUIRED)
+
+        const customerPhone = await Customer.findOne({ phone: customerData?.phone })
+        const customerAlternatePhone = await Customer.findOne({ alternatePhone: customerData?.alternatePhone })
+        const customerPanNumber = await Customer.findOne({ pan: customerData?.pan })
+        const customerEmail = await Customer.findOne({ email: customerData?.email })
+
+        if (customerPhone || customerAlternatePhone) {
+            return res.status(400).json({ success: false, message: ResponseMessages?.ACCOUNT_ALREADY_EXISTS_WITH_PHONE })
+        } else if (customerPanNumber) {
+            return res.status(400).json({ success: false, message: ResponseMessages?.ACCOUNT_ALREADY_EXISTS_WITH_PAN })
+        } else if (customerEmail) {
+            return res.status(400).json({ success: false, message: ResponseMessages?.ACCOUNT_ALREADY_EXISTS_WITH_EMAIL })
+        }
+
         const response = await customerService(customerData, userId);
         console.log("response", { response })
         res.json({ message: ResponseMessages?.CREATED_CUSTOMER, data: response });
@@ -99,9 +113,9 @@ export const handleFileController = async (req: Request, res: Response) => {
         const loggedInUser = req.user
         console.log({ loggedInUser })
         const id = loggedInUser?.id
-        console.log({ id })
-        const customer = await Customer.findOne({ createdByAdmin: id }).select({ id: 1 })
-        console.log({ customer })
+        // console.log({ id })
+        // const customer = await Customer.findOne({ createdByAdmin: id }).select({ id: 1 })
+        // console.log({ customer })
 
         const { name } = req.body;
         if (!name) {
@@ -119,7 +133,7 @@ export const handleFileController = async (req: Request, res: Response) => {
 
         console.log({ customers })
         const savedCustomers = await CustomerArrayModel.create({
-            createdByCustomerId: customer,
+            // createdByCustomerId: customer,
             customers
         });
         return res.status(201).json({ message: 'Customers saved successfully', savedCustomers });

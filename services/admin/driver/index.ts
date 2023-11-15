@@ -1,4 +1,3 @@
-import { ResponseMessages } from "../../../contants/response";
 import driver from "../../../models/driver";
 import { DriverDetails } from "../../../types/customer";
 
@@ -10,7 +9,7 @@ export const driverService = async (driverData: DriverDetails, userId: string) =
         })
         return response;
     } catch (error: any) {
-        throw new Error(ResponseMessages?.DUPLICATE_ENTERIES)
+        throw new Error(error)
     }
 }
 
@@ -18,4 +17,13 @@ export const driverService = async (driverData: DriverDetails, userId: string) =
 export const getDriverByIdService = async (id: string) => {
     const response = await driver.findById(id).select({ createdByAdmin: 0 });
     return response;
+}
+
+export const deleteDriverByIdService = async (id: string) => {
+    const response = await driver.findByIdAndDelete(id)
+    return response;
+}
+
+export const getAllDriverService = async (userId: string) => {
+    return await driver.find({ createdByAdmin: userId })
 }

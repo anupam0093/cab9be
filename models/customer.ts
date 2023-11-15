@@ -172,7 +172,14 @@ const newCustomer = new Schema<INewCustomer>({
     },
     pan: {
         type: String,
-        required: false,
+        required: true,
+        validate: {
+            validator: function (value: any) {
+                var pan = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+                return !value || !value.trim().length || pan.test(value);
+            },
+            message: "Provided Pan number is invalid.",
+        },
     },
     serviceTaxNumber: {
         type: String,

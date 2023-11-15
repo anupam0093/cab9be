@@ -4,10 +4,13 @@ export const ResponseMessages: any = {};
 ResponseMessages.FIELD_REQUIRED = 'Please all fields are required';
 ResponseMessages.ACCOUNT_ALREADY_EXISTS_WITH_EMAIL = 'Account already exists with this email';
 ResponseMessages.ACCOUNT_ALREADY_EXISTS_WITH_PHONE = 'Account already exists with this phone';
+ResponseMessages.ACCOUNT_ALREADY_EXISTS_WITH_PAN = 'Account already exists with this pan';
+ResponseMessages.ACCOUNT_ALREADY_EXISTS_WITH_AADHAR = 'Account already exists with this aadhar';
 ResponseMessages.REGISTRATION = 'Registration successfully';
 ResponseMessages.USER_NOT_FOUND = 'Username is not found. Invalid login credentials';
 ResponseMessages.INCORRECT_PASSWORD = 'Incorrect password';
 ResponseMessages.LOGIN_SUCCESS = 'You are logged in Successfully.';
+
 ResponseMessages.AUTH_TOKEN_NOT_FOUND = 'Full authentication is required to access the resources.';
 ResponseMessages.ACCESS_DENIED = 'Access denied. Insufficient permissions..';
 ResponseMessages.UNKNOW_ERROR = 'Unknown error';
@@ -15,6 +18,7 @@ ResponseMessages.CREATED_CUSTOMER = 'Customer created successfully';
 ResponseMessages.CUSTOMER_EMAIL = 'Account already exists with this customer email';
 ResponseMessages.CUSTOMER_PHONE = 'Account already exists with this customer phone';
 ResponseMessages.GST_NUMBER = 'Found duplicate gst nubmer';
+
 ResponseMessages.DUPLICATE_ENTERIES = 'Found duplicate enteries';
 ResponseMessages.CUSTOMER_PAN_NUMBER = 'Account already exists with this customer pan';
 ResponseMessages.PASSWORDS_DO_NOT_MATCH = 'Passwords do not match';
@@ -22,15 +26,14 @@ ResponseMessages.ID_REQUIRED = "Invalid Id provided.";
 ResponseMessages.DELETED_CUSTOMER = "Deleted customer successfully.";
 ResponseMessages.CUSTOMER = "Customer";
 ResponseMessages.CUSTOMERS = "Customers";
+
 ResponseMessages.IMAGE = "IMAGE is required";
 ResponseMessages.INTERNAL_SERVER_ERROR = "Internal Server Error! Try again, please!."
 ResponseMessages.CUSTOMER_NOT_FOUND = "Customer not found"
-
 ResponseMessages.CREATED_DRIVER = 'Driver created successfully';
 ResponseMessages.DRIVER = "Driver";
 ResponseMessages.DRIVERS = "Drivers";
-
-
+ResponseMessages.DELETED_DRIVER = "Deleted driver successfully.";
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';
 ResponseMessages.EMAIL_USERNAME_REQUIRED = 'Email or username is required';

@@ -204,3 +204,898 @@ export interface DriverDetails {
 
 
 
+
+// {
+//     "success": true,
+//         "message": "Drivers",
+//             "data": [
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65545c0452f5ea40602ce57b",
+//                     "name": "John Doe",
+//                     "phone": "9876543210",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65545c0452f5ea40602ce57c"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65545c0452f5ea40602ce57d"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65545c0452f5ea40602ce57e"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T05:49:56.456Z",
+//                     "updatedAt": "2023-11-15T05:49:56.456Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65545e9985da1cdf451c71e8",
+//                     "name": "John Doe",
+//                     "phone": "9876543210",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65545e9985da1cdf451c71e9"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65545e9985da1cdf451c71ea"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65545e9985da1cdf451c71eb"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:00:57.662Z",
+//                     "updatedAt": "2023-11-15T06:00:57.662Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65545e9e85da1cdf451c71ed",
+//                     "name": "John Doe",
+//                     "phone": "9876543210",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65545e9e85da1cdf451c71ee"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65545e9e85da1cdf451c71ef"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65545e9e85da1cdf451c71f0"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:01:02.394Z",
+//                     "updatedAt": "2023-11-15T06:01:02.394Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65545ea185da1cdf451c71f2",
+//                     "name": "John Doe",
+//                     "phone": "9876543210",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65545ea185da1cdf451c71f3"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65545ea185da1cdf451c71f4"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65545ea185da1cdf451c71f5"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:01:05.469Z",
+//                     "updatedAt": "2023-11-15T06:01:05.469Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "655460a9386c29879d3f6ef6",
+//                     "name": "John Doe",
+//                     "phone": "9997747030",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "655460a9386c29879d3f6ef7"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "655460a9386c29879d3f6ef8"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "655460a9386c29879d3f6ef9"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:09:45.443Z",
+//                     "updatedAt": "2023-11-15T06:09:45.443Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "655460d117c35db6c3f79ecf",
+//                     "name": "John Doe",
+//                     "phone": "9997747031",
+//                     "alternatePhone": "9876543211",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "655460d117c35db6c3f79ed0"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "655460d117c35db6c3f79ed1"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "655460d117c35db6c3f79ed2"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:10:25.343Z",
+//                     "updatedAt": "2023-11-15T06:10:25.343Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "6554611b83ff5d1fc7c002b3",
+//                     "name": "John Doe",
+//                     "phone": "9997747032",
+//                     "alternatePhone": "9876543212",
+//                     "pan": "ABCDE1234F",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "6554611b83ff5d1fc7c002b4"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "6554611b83ff5d1fc7c002b5"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "6554611b83ff5d1fc7c002b6"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:11:39.430Z",
+//                     "updatedAt": "2023-11-15T06:11:39.430Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "655461ef97b6d441db08ac69",
+//                     "name": "John Doe",
+//                     "phone": "9997747033",
+//                     "alternatePhone": "9876543213",
+//                     "pan": "CJZPA1072N",
+//                     "aadharCardNumber": "123456789012",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "655461ef97b6d441db08ac6a"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "655461ef97b6d441db08ac6b"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "655461ef97b6d441db08ac6c"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:15:11.990Z",
+//                     "updatedAt": "2023-11-15T06:15:11.990Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "655464475c8be01334db0045",
+//                     "name": "John Doe",
+//                     "phone": "9997747036",
+//                     "alternatePhone": "9876543216",
+//                     "pan": "CJZPA1072O",
+//                     "aadharCardNumber": "492133514856",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "655464475c8be01334db0046"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "655464475c8be01334db0047"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "655464475c8be01334db0048"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:25:11.544Z",
+//                     "updatedAt": "2023-11-15T06:25:11.544Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "6554689b792c2e966092f876",
+//                     "name": "John Doe",
+//                     "phone": "9997747037",
+//                     "alternatePhone": "9876543217",
+//                     "pan": "CJZPA1072K",
+//                     "aadharCardNumber": "492133514857",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "6554689b792c2e966092f877"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "6554689b792c2e966092f878"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "6554689b792c2e966092f879"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:43:39.535Z",
+//                     "updatedAt": "2023-11-15T06:43:39.535Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65546920f8bb58cb5b34a71f",
+//                     "name": "Aasif Aahaan",
+//                     "phone": "9997747038",
+//                     "alternatePhone": "9876543218",
+//                     "pan": "CJZPA1072U",
+//                     "aadharCardNumber": "492133514854",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65548c65333d54a50d3e566d"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65548c65333d54a50d3e566e"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65548c65333d54a50d3e566f"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T06:45:52.258Z",
+//                     "updatedAt": "2023-11-15T09:16:21.240Z",
+//                     "__v": 0
+//                 },
+//                 {
+//                     "workingHours": {
+//                         "start": "09:00 AM",
+//                         "end": "05:00 PM"
+//                     },
+//                     "allowances": {
+//                         "extraDutyAllowance": {
+//                             "secondDuty": "20",
+//                             "thirdDuty": "30",
+//                             "fourthDupt": "40",
+//                             "fifthDuty": "50"
+//                         },
+//                         "dailyAllowance": "50",
+//                         "overTimePerHour": "10",
+//                         "outstationAllowancePerDay": "100",
+//                         "outstationOvernightAllowance": "150",
+//                         "sundayAllowance": "20",
+//                         "earlyStartAllowance": "30",
+//                         "nightAllowance": "40"
+//                     },
+//                     "licenseInformation": {
+//                         "number": "License123",
+//                         "validUpto": "2023-01-01"
+//                     },
+//                     "police": {
+//                         "displayCardNumber": "Police123",
+//                         "displayCardExpiryDate": "2023-01-01",
+//                         "verificationNumber": "Verify123",
+//                         "verificationExpiryDate": "2023-01-01"
+//                     },
+//                     "badge": {
+//                         "badgeNumber": "Badge123",
+//                         "badgeExpiryDate": "2023-01-01"
+//                     },
+//                     "_id": "65546e5c9df4172c70a71e4b",
+//                     "name": "John Doe",
+//                     "phone": "9997747038",
+//                     "alternatePhone": "9876543218",
+//                     "pan": "CJZPA1072U",
+//                     "aadharCardNumber": "123456678998",
+//                     "birthdate": "1990-01-01",
+//                     "joiningDate": "2022-01-01",
+//                     "driverAddress": [
+//                         {
+//                             "type": "Home",
+//                             "address": "123 Main Street",
+//                             "_id": "65546e5c9df4172c70a71e4c"
+//                         }
+//                     ],
+//                     "salaryPerMonth": "5000",
+//                     "dailyWages": "100",
+//                     "branches": "Branch A",
+//                     "dailyWorkingHours": "8",
+//                     "driverDeductions": [
+//                         {
+//                             "name": "Deduction A",
+//                             "amount": "false",
+//                             "_id": "65546e5c9df4172c70a71e4d"
+//                         }
+//                     ],
+//                     "files": [
+//                         {
+//                             "fileName": "File A",
+//                             "fileUrl": "https://example.com/fileA",
+//                             "_id": "65546e5c9df4172c70a71e4e"
+//                         }
+//                     ],
+//                     "additionalInfo": "Additional info",
+//                     "driverCode": "DriverCode123",
+//                     "createdByAdmin": "6549fefb1adf5471747e8692",
+//                     "createdAt": "2023-11-15T07:08:12.750Z",
+//                     "updatedAt": "2023-11-15T07:08:12.750Z",
+//                     "__v": 0
+//                 }
+//             ]
+// }

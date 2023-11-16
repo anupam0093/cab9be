@@ -1,2 +1,2 @@
-const rootEndPoint = "/api/auth";
+const rootEndPoint = "/api";
 export default rootEndPoint;

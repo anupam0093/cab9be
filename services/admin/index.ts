@@ -1,7 +1,6 @@
 import { ResponseMessages } from "../../contants/response";
 import users from "../../models/users";
 const bcryptjs = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 export const registerAdminService = async (
     name: string,

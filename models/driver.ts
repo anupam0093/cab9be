@@ -5,6 +5,7 @@ export interface INewDriver extends Document {
     name: string,
     phone: string,
     alternatePhone: string,
+    avatar: string,
     pan: string,
     aadharCardNumber: string,
     birthdate: string,
@@ -79,6 +80,7 @@ const newDriver = new Schema<INewDriver>({
     phone: {
         type: String,
         required: true,
+        unique: true,
         validate: {
             validator: function (v: any) {
                 var re = /^\d{10}$/;
@@ -90,6 +92,7 @@ const newDriver = new Schema<INewDriver>({
     alternatePhone: {
         type: String,
         required: true,
+        unique: true,
         validate: {
             validator: function (v: any) {
                 var re = /^\d{10}$/;
@@ -101,6 +104,7 @@ const newDriver = new Schema<INewDriver>({
     pan: {
         type: String,
         required: true,
+        unique: true,
         validate: {
             validator: function (value: any) {
                 var pan = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
@@ -109,9 +113,14 @@ const newDriver = new Schema<INewDriver>({
             message: "Provided Pan number is invalid.",
         },
     },
+    avatar: {
+        type: String,
+        required: false
+    },
     aadharCardNumber: {
         type: String,
         required: true,
+        unique: true,
     },
     birthdate: {
         type: String,
@@ -225,6 +234,7 @@ const newDriver = new Schema<INewDriver>({
         number: {
             type: String,
             required: false,
+            unique: true,
         },
         validUpto: {
             type: String,

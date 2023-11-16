@@ -5,11 +5,13 @@ const bcryptjs = require("bcryptjs");
 import users from "../../models/users";
 import { ResponseMessages } from "../../contants/response";
 import { registerAdminService } from "../../services/admin";
+import { decodeJWT, signJWT, verifyJWT } from "../../services/auth-service";
+import { sendMagicLinkService } from "../../services/email-services";
 
 // ADMIN SIGNUP CONTROLLER 
 export const handleAdminController = async (req: Request, res: Response) => {
     try {
-        const { name, email, password, phone, confirmPassword} = req.body;
+        const { name, email, password, phone, confirmPassword } = req.body;
         const user = await registerAdminService(
             name,
             email,
@@ -19,11 +21,34 @@ export const handleAdminController = async (req: Request, res: Response) => {
             ROLE.admin
         );
 
+        // const payload = {
+        //     name: name,
+        //     email: email,
+        //     password: password,
+        //     role: ROLE.admin,
+        //     phone: phone,
+        //     confirmPassword: confirmPassword
+        // }
+        // const jwt = signJWT(payload)
+        // const link = `https://mail.zoho.in/zm/#mail/folder/inbox/auth/verify?token=${jwt}`;
+        // console.log({ link })
+        // const sendMagicLink = await sendMagicLinkService(email, link);
+
+        // console.log("== Send magic ling ==", { sendMagicLink })
+
+        // if (sendMagicLink) {
+        //     return res.status(200).json({
+        //         success: true,
+        //         message: ResponseMessages?.REGISTRATION,
+        //     });
+        // }
+
         return res.status(200).json({
             success: true,
             user,
             message: ResponseMessages?.REGISTRATION,
         });
+
     } catch (error: any) {
         res.status(500).json({ error: error.message });
     }
@@ -35,6 +60,8 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
 
         const user = await users.findOne({ email: email });
         console.log({ user })
+        if (!user) throw new Error("User not found");
+        if (!user.password) throw new Error("User not found");
         if (user) {
             const userPassword = await bcryptjs.compare(password, user.password);
             if (!userPassword) res.status(401).json({ success: false, message: ResponseMessages.INCORRECT_PASSWORD })
@@ -81,6 +108,7 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
         res.status(500).json({ error: error.message });
     }
 };
+
 
 
 

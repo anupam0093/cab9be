@@ -35,6 +35,11 @@ ResponseMessages.DRIVER = "Driver";
 ResponseMessages.DRIVERS = "Drivers";
 ResponseMessages.DELETED_DRIVER = "Deleted driver successfully.";
 
+ResponseMessages.CREATED_VEHICLE = 'Vehicle created successfully';
+ResponseMessages.VEHICLE_NUMBER_EXISTS = 'Vehicle number is already exists';
+
+
+
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';
 ResponseMessages.EMAIL_USERNAME_REQUIRED = 'Email or username is required';
 ResponseMessages.PASSWORD_REQUIRED = 'Password is required';

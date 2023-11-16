@@ -165,6 +165,105 @@ export interface DriverDetails {
     driverCode: string;
 };
 
+
+interface Loan {
+    emiAmount: number;
+    startDate: Date;
+    endDate: Date;
+    bankName: string;
+    emiDay: number;
+}
+
+interface Registration {
+    registeredOwnerName: string;
+    registrationDate: Date;
+}
+
+interface Parts {
+    chassisNumber: string;
+    engineNumber: string;
+}
+
+interface Insurance {
+    companyName: string;
+    policyNumber: string;
+    issueDate: Date;
+    dueDate: Date;
+    premiumAmount: number;
+    coverAmount: number;
+}
+
+interface RTO {
+    address: string;
+    taxEfficiency: string;
+    expiryDate: Date;
+}
+
+interface Fitness {
+    number: number;
+    expiryDate: Date;
+}
+
+interface Authorization {
+    number: number;
+    expiryDate: Date;
+}
+
+interface SpeedGoverner {
+    details: string;
+    expiryDate: Date;
+}
+
+interface PUC {
+    number: number;
+    expiryDate: Date;
+}
+
+interface Permit {
+    type: string;
+    expiryDate: Date;
+}
+
+interface File {
+    fileName: string;
+    fileUrl: string;
+}
+
+export interface Vehicle {
+    modelName: string;
+    vehicleNumber: string;
+    avatar: string;
+    colour: string;
+    fuelType: string;
+    seatingCapacity: number;
+    assignedDriver: string;
+    categoryVehicleGroup: string;
+    branches: string;
+    vehicleCode: string;
+    loan: Loan;
+    registration: Registration;
+    parts: Parts;
+    insurance: Insurance;
+    rto: RTO;
+    fitness: Fitness;
+    authorization: Authorization;
+    speedGoverner: SpeedGoverner;
+    puc: PUC;
+    permits: Permit[];
+    files: File[];
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Example Usage:
 // const employee: DriverDetails = {
 //     name: "John Doe",

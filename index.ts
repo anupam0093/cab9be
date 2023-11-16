@@ -58,11 +58,11 @@ app.get("/", (req, res) => {
 // DYNAMIC ROUTES...
 const routes = [
   {
-    path: `${rootEndPoint}/superadmin`,
+    path: `${rootEndPoint}/auth/superadmin`,
     func: superAdminRoutes,
   },
   {
-    path: `${rootEndPoint}/admin`,
+    path: `${rootEndPoint}/auth`,
     func: adminRoutes
   }
 ];

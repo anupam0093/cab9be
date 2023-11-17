@@ -9,6 +9,7 @@ export interface IUser extends Document {
   confirmPassword: string;
   role: string;
   isRegistered: boolean;
+  status: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -57,6 +58,11 @@ const userSchema = new Schema<IUser>({
     type: Boolean,
     default: false,
   },
+  status: {
+    type: String,
+    default: "PENDING",
+    required: false
+  }
 },
   { timestamps: true }
 )

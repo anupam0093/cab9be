@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
 import rootEndPoint from "./config/endpoint";
+import users from "./models/users";
 
 mongoose.set("strictQuery", false);
 
@@ -62,10 +63,21 @@ const routes = [
     func: superAdminRoutes,
   },
   {
-    path: `${rootEndPoint}/auth`,
+    path: `${rootEndPoint}/auth/admin`,
     func: adminRoutes
   }
 ];
+
+app.get('/verify', async (req, res) => {
+  try {
+    const userId = req.query.id;
+    await users.updateOne({ _id: userId }, { $set: { status: "VERIFIED" } });
+    return res.send('Email verified successfully!');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Internal Server Error');
+  }
+});
 
 routes.forEach(({ path, func }) => {
   app.use(path, func);

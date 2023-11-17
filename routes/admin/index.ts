@@ -33,6 +33,4 @@ router.put("/driver/:id", isVerified([ROLE.admin]), handleUpdateDriverController
 // --------------------------------- VEHICLE ROUTES ------------------------------------ 
 router.post("/new-vehicle", isVerified([ROLE.admin]), handleAddVehicle)
 
-
-
 export default router;

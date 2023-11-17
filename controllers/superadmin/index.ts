@@ -5,6 +5,7 @@ import { registerAdminService } from "../../services/admin";
 const bcryptjs = require("bcryptjs");
 import users from "../../models/users";
 import { signJWT } from "../../services/auth-service";
+import { sendMagicLinkService } from "../../services/email-services";
 
 
 // SUPERADMIN SIGNUP CONTROLLER
@@ -20,11 +21,28 @@ export const handleSuperadminController = async (req: Request, res: Response) =>
             ROLE.superadmin
         );
 
-        return res.status(200).json({
-            success: true,
-            user,
-            message: ResponseMessages?.REGISTRATION,
-        });
+        console.log({ user })
+        const payload = {
+            name: name,
+            email: email,
+            password: password,
+            phone: phone,
+            confirmPassword: confirmPassword
+        }
+        const jwt = signJWT(payload)
+        const link = `https://mail.zoho.in/zm/#mail/folder/inbox/api/auth/admin/verify/${jwt}`;
+        console.log({ link })
+        const sendMagicLink = await sendMagicLinkService(email, link, user?.id);
+
+        // console.log("== Send magic ling ==", { sendMagicLink })
+
+        if (sendMagicLink) {
+            return res.status(200).json({
+                success: true,
+                user,
+                message: ResponseMessages?.REGISTRATION,
+            });
+        }
     } catch (error: any) {
         res.status(500).json({ error: error.message });
     }
@@ -37,7 +55,8 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
         const { email, password } = req.body;
 
         const user = await users.findOne({ email: email });
-        if (user) {
+        console.log({ user })
+        if (user?.status === "VERIFIED") {
             const userPassword = await bcryptjs.compare(password, user.password);
             if (!userPassword) res.status(401).json({ success: false, message: ResponseMessages.INCORRECT_PASSWORD })
             if (userPassword) {
@@ -58,8 +77,6 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
                     token: `Bearer ${token}`,
                     expiresIn: process.env.TOKEN_EXPIRATION,
                 };
-
-                // console.log("=== RESULT ===", { result })
 
                 res.cookie("access_token", token, {
                     httpOnly: true,

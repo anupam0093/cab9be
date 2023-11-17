@@ -1,6 +1,6 @@
 import "dotenv/config";
 import dotenv from "dotenv";
-import express, { Express, Request } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import { createServer } from "http";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -10,6 +10,8 @@ import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
 import rootEndPoint from "./config/endpoint";
 import users from "./models/users";
+import { decodeJWT, verifyJWT } from "./services/auth-service";
+import { ResponseMessages } from "./contants/response";
 
 mongoose.set("strictQuery", false);
 
@@ -68,11 +70,49 @@ const routes = [
   }
 ];
 
+// app.get('/verify/:token', (req, res) => {
+//   try {
+//     const token = req.params.token;
+
+//     // Verify the token using the secret key
+//     jwt.verify(token, secretKey, (err, decoded) => {
+//       if (err) {
+//         console.error(err);
+//         return res.status(401).send('Token verification failed');
+//       }
+
+//       // Token is valid, you can access the decoded information
+//       const { name, email, phone, /* other claims */ } = decoded;
+
+//       // Perform any additional logic, e.g., mark the user as verified in the database
+
+//       return res.send('Token verified successfully');
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).send('Internal Server Error');
+//   }
+// });
+
 app.get('/verify', async (req, res) => {
   try {
     const userId = req.query.id;
     await users.updateOne({ _id: userId }, { $set: { status: "VERIFIED" } });
-    return res.send('Email verified successfully!');
+    const successMessage = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Email Verification Success</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+      <h1>Email Verified Successfully!</h1>
+      <p>Your email has been successfully verified. You can now log in and access our services.</p>
+    </body>
+    </html>
+  `;
+    return res.send(successMessage);
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal Server Error');

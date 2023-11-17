@@ -29,20 +29,20 @@ export const handleSuperadminController = async (req: Request, res: Response) =>
             phone: phone,
             confirmPassword: confirmPassword
         }
-        const jwt = signJWT(payload)
-        const link = `https://mail.zoho.in/zm/#mail/folder/inbox/api/auth/admin/verify/${jwt}`;
-        console.log({ link })
-        const sendMagicLink = await sendMagicLinkService(email, link, user?.id);
+        // const jwt = signJWT(payload)
+        // const link = `https://mail.zoho.in/zm/#mail/folder/inbox/api/auth/admin/verify/${jwt}`;
+        // console.log({ link })
+        // const sendMagicLink = await sendMagicLinkService(email, link, user?.id);
 
         // console.log("== Send magic ling ==", { sendMagicLink })
 
-        if (sendMagicLink) {
-            return res.status(200).json({
-                success: true,
-                user,
-                message: ResponseMessages?.REGISTRATION,
-            });
-        }
+        // if (sendMagicLink) {
+        //     return res.status(200).json({
+        //         success: true,
+        //         user,
+        //         message: ResponseMessages?.REGISTRATION,
+        //     });
+        // }
     } catch (error: any) {
         res.status(500).json({ error: error.message });
     }

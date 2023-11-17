@@ -21,6 +21,8 @@ export const handleAdminController = async (req: Request, res: Response) => {
             ROLE.admin
         );
 
+        //Ankur Number :  9927731332
+
         console.log({ user })
         const payload = {
             name: name,
@@ -30,11 +32,17 @@ export const handleAdminController = async (req: Request, res: Response) => {
             confirmPassword: confirmPassword
         }
         const jwt = signJWT(payload)
-        const link = `https://mail.zoho.in/zm/#mail/folder/inbox/api/auth/admin/verify/${jwt}`;
-        console.log({ link })
-        const sendMagicLink = await sendMagicLinkService(email, link, user?.id);
 
-        // console.log("== Send magic ling ==", { sendMagicLink })
+        const link = `${process.env.CLIENT_URL}/verify/${jwt}`;
+        console.log({ link })
+
+        const currentDate = Date.now();
+        console.log({ currentDate })
+
+        const sendMagicLink = await sendMagicLinkService(email, link, user?.id, currentDate);
+        // const sendMagicLink = await sendMagicLinkService(email, link);
+
+        console.log("== Send magic ling ==", { sendMagicLink })
 
         if (sendMagicLink) {
             return res.status(200).json({

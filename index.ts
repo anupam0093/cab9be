@@ -1,6 +1,6 @@
 import "dotenv/config";
 import dotenv from "dotenv";
-import express, { Express, NextFunction, Request, Response } from "express";
+import express, { Express } from "express";
 import { createServer } from "http";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -10,8 +10,6 @@ import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
 import rootEndPoint from "./config/endpoint";
 import users from "./models/users";
-import { decodeJWT, verifyJWT } from "./services/auth-service";
-import { ResponseMessages } from "./contants/response";
 
 mongoose.set("strictQuery", false);
 
@@ -51,7 +49,7 @@ app.use(
 );
 
 
-app.use('/customer', express.static('upload/images'));
+app.use('/images', express.static('upload/images'));
 
 //ROUTES
 app.get("/", (req, res) => {

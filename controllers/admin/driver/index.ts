@@ -116,7 +116,7 @@ export const handleProfileController = async (req: Request, res: Response) => {
         if (req.file == undefined) {
             return res.status(400).send({ message: ResponseMessages.IMAGE });
         }
-        const profile = `${process.env.BASE_URL}/customer/${req.file.filename}`
+        const profile = `${process.env.BASE_URL}/images/${req.file.filename}`
         // const profile = await resizeImageAndUpload(req.file, "profile");
         res.status(200).send({ success: true, profile });
     } catch (error) {

@@ -37,6 +37,14 @@ ResponseMessages.DELETED_DRIVER = "Deleted driver successfully.";
 
 ResponseMessages.CREATED_VEHICLE = 'Vehicle created successfully';
 ResponseMessages.VEHICLE_NUMBER_EXISTS = 'Vehicle number is already exists';
+ResponseMessages.VEHICLE = "Vehicle";
+ResponseMessages.VEHICLES = "Vehicles";
+ResponseMessages.DELETED_VEHICLE = "Deleted vehicle successfully.";
+
+
+
+
+
 
 
 

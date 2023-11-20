@@ -5,7 +5,7 @@ import { handleAdminController } from "../../controllers/admin";
 import { deleteCustomerByIdController, getAllCustomerController, getCustomerByIdController, handleNewCustomer, handleFileController, handleUpdateCustomerController } from "../../controllers/admin/customer";
 import upload from "../../config/multer";
 import { deleteDriverByIdController, getAllDriverController, getDriverByIdController, handleNewDriver, handleProfileController, handleUpdateDriverController } from "../../controllers/admin/driver";
-import { handleAddVehicle } from "../../controllers/admin/vehicle";
+import { deleteVehicleByIdController, getAllVehicleController, getVehicleByIdController, handleAddVehicle } from "../../controllers/admin/vehicle";
 const router = Router();
 
 // --------------------------------- ADMIN ROUTES --------------------------------------- 
@@ -18,7 +18,7 @@ router.delete("/customer/:id", isVerified([ROLE.admin]), deleteCustomerByIdContr
 router.get("/customer", isVerified([ROLE.admin]), getAllCustomerController)
 router.put("/customer/:id", isVerified([ROLE.admin]), handleUpdateCustomerController);
 
-// ------------------- COMMON ROUTES FILE FOR ---> CUSTOMER, DRIVER AND VEHICL--------------- 
+// ------------------- COMMON ROUTES FILE FOR ---> CUSTOMER, DRIVER AND VEHICLE --------------- 
 router.post("/file", upload.single("image"), isVerified([ROLE.admin]), handleFileController);
 
 
@@ -32,5 +32,10 @@ router.put("/driver/:id", isVerified([ROLE.admin]), handleUpdateDriverController
 
 // --------------------------------- VEHICLE ROUTES ------------------------------------ 
 router.post("/new-vehicle", isVerified([ROLE.admin]), handleAddVehicle)
+router.get("/vehicle/:id", isVerified([ROLE.admin]), getVehicleByIdController)
+router.get("/vehicle", isVerified([ROLE.admin]), getAllVehicleController)
+router.delete("/vehicle/:id", isVerified([ROLE.admin]), deleteVehicleByIdController)
+router.post("/vehicle-image", upload.single("vehicle-image"), isVerified([ROLE.admin]), handleProfileController)
+
 
 export default router;

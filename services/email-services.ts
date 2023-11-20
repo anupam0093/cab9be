@@ -86,14 +86,17 @@ export const sendMagicLinkService = async (
   email: string,
   redirectTo: string,
   id: string,
-  expirationTimeMinutes: number
+  // expirationTimeMinutes: number
 ) => {
-  const expirationTime = Date.now() + expirationTimeMinutes * 60 * 1000;
-  const expirationToken = Buffer.from(expirationTime.toString()).toString('base64');
+  // const expirationTime = Date.now() + expirationTimeMinutes * 60 * 1000;
+  // const expirationToken = Buffer.from(expirationTime.toString()).toString('base64');
 
-  console.log({ expirationTime }, { expirationTimeMinutes })
+  // console.log({ expirationTime }, { expirationTimeMinutes })
 
-  const verificationLink = `${process.env.CLIENT_URL}/verify?id=${id}&exp=${expirationToken}`;
+  // const verificationLink = `${process.env.CLIENT_URL}/verify?id=${id}&exp=${expirationToken}`;
+  // console.log({ verificationLink })
+
+  const verificationLink = `${process.env.CLIENT_URL}/verify?id=${id}`;
   console.log({ verificationLink })
 
   return new Promise(async (resolve, reject) => {

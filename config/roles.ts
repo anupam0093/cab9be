@@ -6,3 +6,9 @@ const ROLE = {
 };
 
 export default ROLE
+
+export const STATUS = {
+    VERIFIED: "VERIFIED"
+}
+
+

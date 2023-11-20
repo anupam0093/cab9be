@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ROLE from "../../config/roles";
+import ROLE, { STATUS } from "../../config/roles";
 import { ResponseMessages } from "../../contants/response";
 import { registerAdminService } from "../../services/admin";
 const bcryptjs = require("bcryptjs");
@@ -57,7 +57,7 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
 
         const user = await users.findOne({ email: email });
         console.log({ user })
-        if (user?.status === "VERIFIED") {
+        if (user?.status === STATUS.VERIFIED) {
             const userPassword = await bcryptjs.compare(password, user.password);
             if (!userPassword) res.status(401).json({ success: false, message: ResponseMessages.INCORRECT_PASSWORD })
             if (userPassword) {
@@ -93,17 +93,9 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
                 res.status(200).send({ success: false, message: ResponseMessages.USER_NOT_FOUND });
             }
         } else {
-            res.status(200).send({ success: false, message: ResponseMessages.USER_NOT_FOUND });
+            res.status(200).send({ success: false, message: ResponseMessages.INVALID_ACCOUNT_VALIDATION });
         }
     } catch (error: any) {
         res.status(500).json({ error: error.message });
     }
 };
-
-export const handleProfile = async (req: Request, res: Response) => {
-    try {
-        res.status(200).json({ success: true, message: "Working fine" })
-    } catch (error: any) {
-        res.status(400).json({ success: false, error: error.message })
-    }
-}

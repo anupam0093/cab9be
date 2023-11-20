@@ -10,6 +10,8 @@ import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
 import rootEndPoint from "./config/endpoint";
 import users from "./models/users";
+import { STATUS } from "./config/roles";
+import { ResponseMessages } from "./contants/response";
 
 mongoose.set("strictQuery", false);
 
@@ -39,7 +41,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
-
 // ALLOWED FOR MULIPLE CORS
 app.use(
   cors({
@@ -47,7 +48,6 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-
 
 app.use('/images', express.static('upload/images'));
 
@@ -95,22 +95,18 @@ const routes = [
 app.get('/verify', async (req, res) => {
   try {
     const userId = req.query.id;
-    await users.updateOne({ _id: userId }, { $set: { status: "VERIFIED" } });
-    const successMessage = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Email Verification Success</title>
-    </head>
-    <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-      <h1>Email Verified Successfully!</h1>
-      <p>Your email has been successfully verified. You can now log in and access our services.</p>
-    </body>
-    </html>
-  `;
-    return res.send(successMessage);
+    await users.updateOne({ _id: userId }, { $set: { status: STATUS.VERIFIED } });
+    const currentUser = await users.findOne({ _id: userId })
+    console.log({ currentUser })
+
+    if (currentUser) {
+      const verificationStatus = currentUser?.status
+      const message = getVerificationMessage(verificationStatus);
+      return res.send(message);
+    } else {
+      return res.send(ResponseMessages.INVALID_ACCOUNT_VALIDATION)
+    }
+
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal Server Error');
@@ -120,6 +116,110 @@ app.get('/verify', async (req, res) => {
 routes.forEach(({ path, func }) => {
   app.use(path, func);
 });
+
+function getVerificationMessage(verificationStatus: any) {
+  switch (verificationStatus) {
+    case 'VERIFIED':
+      const successMessage = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Email Verification Success</title>
+      </head>
+      <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+        <h1>Email Verified Successfully!</h1>
+        <p>Your email has been successfully verified. You can now log in and access our services.</p>
+      </body>
+      </html>
+    `;
+      return successMessage;
+    case 'PENDING':
+      const failureMessage = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Email Verification Failed</title>
+        </head>
+        <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+          <h1>Email Verification Failed</h1>
+          <p>Sorry, we couldn't verify your email. Please try again or contact support.</p>
+        </body>
+        </html>
+      `;
+      return failureMessage
+    default:
+      return 'Invalid verification status';
+  }
+}
+
+
+// const successMessage = `
+//   <!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Email Verification Success</title>
+//   </head>
+//   <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+//     <h1>Email Verified Successfully!</h1>
+//     <p>Your email has been successfully verified. You can now log in and access our services.</p>
+//   </body>
+//   </html>
+// `;
+
+// const failureMessage = `
+//   <!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Email Verification Failed</title>
+//   </head>
+//   <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+//     <h1>Email Verification Failed</h1>
+//     <p>Sorry, we couldn't verify your email. Please try again or contact support.</p>
+//   </body>
+//   </html>
+// `;
+
+// const passwordResetSuccessMessage = `
+//   <!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Password Reset Success</title>
+//   </head>
+//   <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+//     <h1>Password Reset Successful!</h1>
+//     <p>Your password has been successfully reset. You can now log in with your new password.</p>
+//   </body>
+//   </html>
+// `;
+
+// const passwordResetFailureMessage = `
+//   <!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Password Reset Failed</title>
+//   </head>
+//   <body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+//     <h1>Password Reset Failed</h1>
+//     <p>Sorry, we couldn't reset your password. Please try again or contact support.</p>
+//   </body>
+//   </html>
+// `;
+
+
+
+
 
 
 

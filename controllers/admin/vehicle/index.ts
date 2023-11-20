@@ -70,6 +70,34 @@ export const deleteVehicleByIdController = async (req: Request, res: Response) =
     }
 }
 
+export const handleUpdateVehicleController = async (req: Request, res: Response) => {
+    try {
+        const loggedInUser = req.user
+        const updateVehicleData: Vehicle = req.body;
+        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+            const id = req.params
+            if (!id && !isValidObjectId(id)) {
+                res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
+            }
+            const driverId = req.params.id;
+            const updateVehicle = await vehicle.findByIdAndUpdate(
+                driverId,
+                updateVehicleData,
+                { new: true }
+            );
+
+            if (!updateVehicle) {
+                res.status(404).json({ error: ResponseMessages.CUSTOMER_NOT_FOUND });
+                return;
+            }
+            res.status(200).json(updateVehicle);
+        }
+
+    } catch (error: any) {
+        res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
+    }
+}
+
 
 
 

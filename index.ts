@@ -8,10 +8,14 @@ import { databaseConnect } from "./config/database";
 const mongoose = require("mongoose");
 import superAdminRoutes from "./routes/superadmin/index";
 import adminRoutes from "./routes/admin/index";
+import settingsRoutes from "./routes/admin/settings"
 import rootEndPoint from "./config/endpoint";
 import users from "./models/users";
 import { STATUS } from "./config/roles";
 import { ResponseMessages } from "./contants/response";
+import { handleAdminLogin } from "./controllers/superadmin";
+import { SettingsDutiesBookings } from "./types/customer";
+import dutiesBookings from "./models/settings/duties-bookings";
 
 mongoose.set("strictQuery", false);
 
@@ -65,8 +69,14 @@ const routes = [
   {
     path: `${rootEndPoint}/auth/admin`,
     func: adminRoutes
+  },
+  {
+    path: `${rootEndPoint}/auth/admin/settings`,
+    func: settingsRoutes
   }
 ];
+
+app.post("/api/auth/signin", handleAdminLogin)
 
 // app.get('/verify/:token', (req, res) => {
 //   try {
@@ -106,7 +116,6 @@ app.get('/verify', async (req, res) => {
     } else {
       return res.send(ResponseMessages.INVALID_ACCOUNT_VALIDATION)
     }
-
   } catch (error) {
     console.error(error);
     return res.status(500).send('Internal Server Error');
@@ -155,7 +164,6 @@ function getVerificationMessage(verificationStatus: any) {
       return 'Invalid verification status';
   }
 }
-
 
 // const successMessage = `
 //   <!DOCTYPE html>

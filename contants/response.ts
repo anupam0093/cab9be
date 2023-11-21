@@ -30,16 +30,21 @@ ResponseMessages.CUSTOMERS = "Customers";
 ResponseMessages.IMAGE = "IMAGE is required";
 ResponseMessages.INTERNAL_SERVER_ERROR = "Internal Server Error! Try again, please!."
 ResponseMessages.CUSTOMER_NOT_FOUND = "Customer not found"
+
 ResponseMessages.CREATED_DRIVER = 'Driver created successfully';
 ResponseMessages.DRIVER = "Driver";
 ResponseMessages.DRIVERS = "Drivers";
 ResponseMessages.DELETED_DRIVER = "Deleted driver successfully.";
+ResponseMessages.DRIVER_NOT_FOUND = "Driver not found"
+
 
 ResponseMessages.CREATED_VEHICLE = 'Vehicle created successfully';
 ResponseMessages.VEHICLE_NUMBER_EXISTS = 'Vehicle number is already exists';
 ResponseMessages.VEHICLE = "Vehicle";
 ResponseMessages.VEHICLES = "Vehicles";
 ResponseMessages.DELETED_VEHICLE = "Deleted vehicle successfully.";
+
+ResponseMessages.UPDATED_DUTIES_BOOKING = "Duties/Bookings updated successfully."
 
 
 

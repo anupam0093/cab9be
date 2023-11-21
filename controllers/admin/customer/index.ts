@@ -6,6 +6,7 @@ import { Request, Response } from "express"
 import ROLE from "../../../config/roles";
 import CustomerArrayModel from "../../../models/file"
 import Customer from "../../../models/customer";
+import customer from "../../../models/customer";
 
 // --------------------------------- CUSTOMER CONTROLLER --------------------------------------- 
 export const handleNewCustomer = async (req: Request, res: Response) => {
@@ -37,14 +38,22 @@ export const handleNewCustomer = async (req: Request, res: Response) => {
 
 export const getCustomerByIdController = async (req: Request, res: Response) => {
     try {
-        const loggedInUser = req.user;
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        const loggedInUser = req.user
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const customer = await Customer.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== FETCH ADMIN ID === ", customer)
+
+        if (loggedInUser?.id == customer?.createdByAdmin) {
             const id = req.params;
             if (!id || !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const response = await getCustomerByIdService(req.params.id);
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMER, data: response });
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: error.message });
@@ -54,14 +63,23 @@ export const getCustomerByIdController = async (req: Request, res: Response) => 
 export const deleteCustomerByIdController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })554
+        const customer = await Customer.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== DELETE ADMIN BY ID === ", customer)
+
+        if (loggedInUser?.id == customer?.createdByAdmin) {
             const id = req.params
             if (!id && !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const response = await deleteCustomerByIdService(req.params.id)
             res.status(200).send({ success: true, message: ResponseMessages?.DELETED_CUSTOMER, data: response });
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
+
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
     }
@@ -70,11 +88,20 @@ export const deleteCustomerByIdController = async (req: Request, res: Response) 
 export const getAllCustomerController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const customer = await Customer.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== UPDATE ADMIN BY ID === ", customer)
+
+        if (loggedInUser?.id == customer?.createdByAdmin) {
             const response = await getAllCustomerService(loggedInUser?.id);
             res.clearCookie("access_token");
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMERS, data: response });
+        } else {
+            res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
         }
+
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
     }

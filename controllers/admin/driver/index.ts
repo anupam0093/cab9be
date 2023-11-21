@@ -92,17 +92,17 @@ export const handleUpdateDriverController = async (req: Request, res: Response) 
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const driverId = req.params.id;
-            const updatedCustomer = await driver.findByIdAndUpdate(
+            const updatedDriver = await driver.findByIdAndUpdate(
                 driverId,
                 updatedDriverData,
                 { new: true }
             );
 
-            if (!updatedCustomer) {
-                res.status(404).json({ error: ResponseMessages.CUSTOMER_NOT_FOUND });
+            if (!updatedDriver) {   
+                res.status(404).json({ error: ResponseMessages.DRIVER_NOT_FOUND });
                 return;
             }
-            res.status(200).json(updatedCustomer);
+            res.status(200).json(updatedDriver);
         }
 
     } catch (error: any) {

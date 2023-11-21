@@ -89,6 +89,7 @@ export interface CustomerRequest {
     customerCode: string;
 }
 
+// =========================================== DRIVER TYPES ===========================================
 
 interface Address {
     type: string;
@@ -165,6 +166,7 @@ export interface DriverDetails {
     driverCode: string;
 };
 
+// =========================================== VEHICEL TYPES ===========================================
 
 interface Loan {
     emiAmount: number;
@@ -286,6 +288,93 @@ const employee: DriverDetails = {
     additionalInfo: "Additional info",
     driverCode: "DriverCode123",
 };
+
+// =========================================== SETTIGS - DUTIES/BOOKINGS ===========================================
+
+export interface SettingsDutiesBookings {
+    allowBookings: boolean;
+    useBookingIdInSMS: boolean;
+    roundOffDutySlip: boolean;
+    autoSendNotification: boolean;
+    hideCustomerName: boolean;
+    allowAllotmentDriverVehicleExpired: boolean;
+    enabledCloseDuty: boolean;
+    autoSelectCompany: boolean;
+    markNewBookings: boolean;
+    dutyRouteLogFetchInterval: string;
+    defaultStartFromGarage: string;
+    printedDutySlip: Date;
+    bookingFormCustomisation: {
+        hideFieldStartFromGarage: boolean;
+        hideDispatchCCenter: boolean;
+        hideBill: boolean;
+        makeReportingAddressMandatory: boolean;
+    };
+    dutiesListing: {
+        showGarage: boolean;
+        showFromCity: boolean;
+        showDropAddress: boolean;
+        showRemarks: boolean;
+        showOperatorNotes: boolean;
+        showVehicleGroup: boolean;
+        showlables: boolean;
+        showEstimatedDropOffTime: boolean;
+    };
+    bookingConfirmationSmsEmail: {
+        addCustomerNameAddressToEmail: boolean;
+        addBookingRemarksToEmail: boolean;
+        addBookingBasePricing: boolean;
+    };
+    defaultOptionsForDutySmsEmail: {
+        toSupplier: {
+            addRemark: boolean;
+            addCustomerNameInEmail: boolean;
+            hidePassengerPhoneNumberToSmsEmail: boolean;
+            attachDutySlipInEmail: boolean;
+            addEntireBookingDates: boolean;
+        };
+        toDriver: {
+            addVehicleDetailsToSMS: boolean;
+            addGarageStartTimeToSms: boolean;
+            addBookingRemarksToSms: boolean;
+            addEntireBookingDate: boolean;
+        };
+        toCustomer: {
+            hideVehicleNameFromEmailAndSms: boolean;
+            addBookingRemarkToEmailAndSms: boolean;
+            addTextDetailsUpdated: boolean;
+            sendSingleEmail: boolean;
+        };
+    };
+    defaultOptionsForDutySlipPrinting: {
+        addCustomerName: boolean;
+        addBookedByName: boolean;
+        addAllPassengerNamesNumbers: boolean;
+        hideDutyTypeName: boolean;
+        hideVehicleGroupName: boolean;
+        hideVehicleName: boolean;
+        hideRemarks: boolean;
+        addGarageStartTime: boolean;
+        addReleasedKMTimeSection: boolean;
+        addEntireBookingDateRange: boolean;
+        addPrintedInformationFooter: boolean;
+        alwaysUseFullPageDesign: boolean;
+        hideBillingTerms: boolean;
+        hideAllowances: boolean;
+        showSpeedKm: boolean;
+        hideFuelSurcharge: boolean;
+        printAssociateDutySlip: boolean;
+    };
+    briefingSheetTermsConditions: boolean;
+    enableStartDutyOtpVerification: boolean;
+    enableStopDutyOtpVerification: boolean;
+    garageTimeSettingsDuty: {
+        minimumGarageStartTime: Date;
+        minimumGarageEndTime: Date;
+    };
+    enableButtonForDrivers: boolean;
+}
+
 
 // =============================== ADD VEHICLE BY ADMIN ===============================
 

@@ -7,7 +7,6 @@ import users from "../../models/users";
 import { signJWT } from "../../services/auth-service";
 import { sendMagicLinkService } from "../../services/email-services";
 
-
 // SUPERADMIN SIGNUP CONTROLLER
 export const handleSuperadminController = async (req: Request, res: Response) => {
     try {
@@ -57,11 +56,11 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
 
         const user = await users.findOne({ email: email });
         console.log({ user })
+        if (!user) throw new Error("User not found");
         if (user?.status === STATUS.VERIFIED) {
             const userPassword = await bcryptjs.compare(password, user.password);
             if (!userPassword) res.status(401).json({ success: false, message: ResponseMessages.INCORRECT_PASSWORD })
             if (userPassword) {
-
                 const payload = {
                     user: {
                         id: user._id,
@@ -71,14 +70,12 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
                         expiresIn: process.env.TOKEN_EXPIRATION
                     },
                 };
-
                 const token = signJWT(payload);
                 const result = {
                     user: user,
                     token: `Bearer ${token}`,
                     expiresIn: process.env.TOKEN_EXPIRATION,
                 };
-
                 res.cookie("access_token", token, {
                     httpOnly: true,
                     expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
@@ -88,7 +85,6 @@ export const handleAdminLogin = async (req: Request, res: Response) => {
                     token: token,
                     message: ResponseMessages.LOGIN_SUCCESS,
                 })
-
             } else {
                 res.status(200).send({ success: false, message: ResponseMessages.USER_NOT_FOUND });
             }

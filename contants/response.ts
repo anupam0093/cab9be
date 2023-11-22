@@ -43,13 +43,10 @@ ResponseMessages.VEHICLE_NUMBER_EXISTS = 'Vehicle number is already exists';
 ResponseMessages.VEHICLE = "Vehicle";
 ResponseMessages.VEHICLES = "Vehicles";
 ResponseMessages.DELETED_VEHICLE = "Deleted vehicle successfully.";
-
 ResponseMessages.UPDATED_DUTIES_BOOKING = "Duties/Bookings updated successfully."
 
-
-
-
-
+ResponseMessages.UPDATED_BILLING = "Billing updated successfully."
+ResponseMessages.FAILED = "Login failed. Invalid credentials.";
 
 
 

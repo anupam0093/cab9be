@@ -1,6 +1,9 @@
 import { ResponseMessages } from "../contants/response";
 import { decodeJWT, verifyJWT } from "../services/auth-service";
 import { Request, Response, NextFunction } from "express"
+const nodeCache = require("node-cache")
+
+const myCache = new nodeCache();
 
 export const isAdmin = (req: Request & { user: any }, res: Response, next: NextFunction) => {
   const token = req.headers["authorization"]?.split(" ")[1];
@@ -89,6 +92,18 @@ export const isVerified = (role: any) => (req: Request & { user: any }, res: Res
     : req.user = decoded?.user;
   next();
 
+};
+
+
+export const checkCache = (req: Request, res: Response, next: NextFunction) => {
+
+  const key = req.originalUrl || req.url;
+  const cachedData = myCache.get(key);
+  if (cachedData) {
+    res.send(cachedData);
+  } else {
+    next();
+  }
 };
 
 

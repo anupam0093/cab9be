@@ -375,6 +375,63 @@ export interface SettingsDutiesBookings {
     enableButtonForDrivers: boolean;
 }
 
+// =========================================== SETTIGS - BILLING ===========================================
+
+interface BillingOptions {
+    roundOffExtraTime: boolean;
+    showPerKilometer: boolean;
+    hideVehicleNumberFromInvoice: boolean;
+    showDutySummary: boolean;
+    tallySalesVoucher: boolean;
+}
+
+interface InvoiceDutySummaryColumns {
+    showDutyId: boolean;
+    showDutyType: boolean;
+    shoeBookedByName: boolean;
+    showPassengerNames: boolean;
+    showVehicleGroupName: boolean;
+    showVehicleNumber: boolean;
+    showStarDate: boolean;
+    showEndDate: boolean;
+    showStartTime: boolean;
+    showEndTime: boolean;
+    showExtraHour: boolean;
+    showTotalHour: boolean;
+    showSpeedOmeterStartKM: boolean;
+    showSpeedOmeterEndKM: boolean;
+    showStartKM: boolean;
+    showEndKM: boolean;
+    showExtraKM: boolean;
+    showTotalKM: boolean;
+    showExtraHourRate: boolean;
+    showExtraKmRate: boolean;
+    showExtraHourCost: boolean;
+    showExtraKmCost: boolean;
+    showConsolidatedBillingTerms: boolean;
+    showSepratedBillingTerms: boolean;
+    showAllowances: boolean;
+    showPrice: boolean;
+    showQuantityNumberOfDays: boolean;
+    showTotalPrice: boolean;
+    showCarHireCharge: boolean;
+    showDutySubtotal: boolean;
+    showDutySubtotalIncludingAllowances: boolean;
+}
+
+export interface SettingsBilling {
+    invoiceDatesNumbering: string;
+    receiptDatesNumbering: string;
+    creditDebitNoteNumbering: string;
+    billingOptions: BillingOptions;
+    invoiceDutySummaryColumns: InvoiceDutySummaryColumns;
+    fontSizeForInvoiceDescription: number;
+    fontSizeOfDutySummary: number;
+    disableEditingForInvoiceBefore: Date;
+}
+
+
+
 
 // =============================== ADD VEHICLE BY ADMIN ===============================
 

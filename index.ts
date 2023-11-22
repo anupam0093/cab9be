@@ -14,8 +14,7 @@ import users from "./models/users";
 import { STATUS } from "./config/roles";
 import { ResponseMessages } from "./contants/response";
 import { handleAdminLogin } from "./controllers/superadmin";
-import { SettingsDutiesBookings } from "./types/customer";
-import dutiesBookings from "./models/settings/duties-bookings";
+import { isVerified } from "./middlewares/utils";
 
 mongoose.set("strictQuery", false);
 
@@ -118,13 +117,32 @@ app.get('/verify', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Internal Server Error');
+    return res.status(500).send(ResponseMessages.INTERNAL_SERVER_ERROR);
   }
 });
 
 routes.forEach(({ path, func }) => {
   app.use(path, func);
 });
+
+// const protectedRoutes = [
+//   {
+//     path: `${rootEndPoint}/auth/superadmin`,
+//     func: [isVerified, superAdminRoutes],
+//   },
+//   {
+//     path: `${rootEndPoint}/auth/admin`,
+//     func: [isVerified, adminRoutes],
+//   },
+//   {
+//     path: `${rootEndPoint}/auth/admin/settings`,
+//     func: [isVerified, settingsRoutes],
+//   },
+// ];
+
+// protectedRoutes.forEach(route => {
+//   app.get(route.path, route.func);
+// });
 
 function getVerificationMessage(verificationStatus: any) {
   switch (verificationStatus) {

@@ -5,7 +5,6 @@ import { deleteDriverByIdService, driverService, getAllDriverService, getDriverB
 import ROLE from "../../../config/roles";
 import { isValidObjectId } from "mongoose";
 import driver from "../../../models/driver";
-import { resizeImageAndUpload } from "../../../services/admin/customer/image-service";
 
 // --------------------------------- DRIVER CONTROLLER --------------------------------------- 
 export const handleNewDriver = async (req: Request, res: Response) => {
@@ -39,14 +38,22 @@ export const handleNewDriver = async (req: Request, res: Response) => {
 
 export const getDriverByIdController = async (req: Request, res: Response) => {
     try {
-        const loggedInUser = req.user;
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        const loggedInUser = req.user
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const response = await driver.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== FETCH ADMIN ID === ", response)
+
+        if (loggedInUser?.id == response?.createdByAdmin) {
             const id = req.params;
             if (!id || !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const response = await getDriverByIdService(req.params.id);
             res.status(200).send({ success: true, message: ResponseMessages?.DRIVER, data: response });
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: error.message });
@@ -56,13 +63,21 @@ export const getDriverByIdController = async (req: Request, res: Response) => {
 export const deleteDriverByIdController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const response = await driver.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== FETCH ADMIN ID === ", response)
+
+        if (loggedInUser?.id == response?.createdByAdmin) {
             const id = req.params
             if (!id && !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
             }
             const response = await deleteDriverByIdService(req.params.id)
             res.status(200).send({ success: true, message: ResponseMessages?.DELETED_DRIVER, data: response });
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
@@ -72,10 +87,18 @@ export const deleteDriverByIdController = async (req: Request, res: Response) =>
 export const getAllDriverController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const response = await driver.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== FETCH ADMIN ID === ", response)
+
+        if (loggedInUser?.id == response?.createdByAdmin) {
             const response = await getAllDriverService(loggedInUser?.id);
             res.clearCookie("access_token");
             res.status(200).send({ success: true, message: ResponseMessages?.DRIVERS, data: response });
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
@@ -85,8 +108,14 @@ export const getAllDriverController = async (req: Request, res: Response) => {
 export const handleUpdateDriverController = async (req: Request, res: Response) => {
     try {
         const loggedInUser = req.user
+        console.log({ loggedInUser })
+        const id = loggedInUser?.id
+        console.log({ id })
+        const response = await driver.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
+        console.log("=== FETCH ADMIN ID === ", response)
+
         const updatedDriverData: DriverDetails = req.body;
-        if (loggedInUser && loggedInUser?.role === ROLE.admin) {
+        if (loggedInUser?.id == response?.createdByAdmin) {
             const id = req.params
             if (!id && !isValidObjectId(id)) {
                 res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
@@ -98,13 +127,14 @@ export const handleUpdateDriverController = async (req: Request, res: Response) 
                 { new: true }
             );
 
-            if (!updatedDriver) {   
+            if (!updatedDriver) {
                 res.status(404).json({ error: ResponseMessages.DRIVER_NOT_FOUND });
                 return;
             }
             res.status(200).json(updatedDriver);
+        } else {
+            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
-
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
     }

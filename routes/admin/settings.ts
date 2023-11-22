@@ -2,7 +2,7 @@ import { Router } from "express";
 import { getDutiesBookingsByIdController, handleSettingsDutyBooking, handleUpdateSettingsDutiesBookings } from "../../controllers/admin/settings/dutie-bookings";
 import { isVerified } from "../../middlewares/utils";
 import ROLE from "../../config/roles";
-import { handleSettingsBilling, handleUpdateSettingsBilling } from "../../controllers/admin/settings/billing";
+import { getBillingByIdController, handleSettingsBilling, handleUpdateSettingsBilling } from "../../controllers/admin/settings/billing";
 const router = Router();
 
 // -------------------------------- SETTINGS DUTIES/BOOKINGS ROUTES --------------------------------
@@ -14,6 +14,7 @@ router.get("/duties-bookings/:id", isVerified([ROLE.admin]), getDutiesBookingsBy
 // --------------------------------- SETTINGS BILLINGS ROUTES ---------------------------------------
 router.post("/billing", isVerified([ROLE.admin]), handleSettingsBilling)
 router.put("/billing", isVerified([ROLE.admin]), handleUpdateSettingsBilling)
+router.get("/billing/:id", isVerified([ROLE.admin]), getBillingByIdController)
 
 
 export default router

@@ -255,40 +255,6 @@ export interface Vehicle {
     files: File[];
 }
 
-// Example Usage:
-const employee: DriverDetails = {
-    name: "John Doe",
-    phone: "9876543210",
-    alternatePhone: "9876543211",
-    pan: "ABCDE1234F",
-    aadharCardNumber: "123456789012",
-    birthdate: "1990-01-01",
-    joiningDate: "2022-01-01",
-    driverAddress: [{ type: "Home", address: "123 Main Street" }],
-    salaryPerMonth: "5000",
-    dailyWages: "100",
-    branches: "Branch A",
-    dailyWorkingHours: "8",
-    workingHours: { start: "09:00 AM", end: "05:00 PM" },
-    allowances: {
-        dailyAllowance: "50",
-        overTimePerHour: "10",
-        outstationAllowancePerDay: "100",
-        outstationOvernightAllowance: "150",
-        sundayAllowance: "20",
-        earlyStartAllowance: "30",
-        nightAllowance: "40",
-        extraDutyAllowance: { secondDuty: "20", thirdDuty: "30", fourthDupt: "40", fifthDuty: "50" },
-    },
-    driverDeductions: [{ name: "Deduction A", amount: false }],
-    licenseInformation: { number: "License123", validUpto: "2023-01-01" },
-    police: { displayCardNumber: "Police123", displayCardExpiryDate: "2023-01-01", verificationNumber: "Verify123", verificationExpiryDate: "2023-01-01" },
-    badge: { badgeNumber: "Badge123", badgeExpiryDate: "2023-01-01" },
-    files: [{ fileName: "File A", fileUrl: "https://example.com/fileA" }],
-    additionalInfo: "Additional info",
-    driverCode: "DriverCode123",
-};
-
 // =========================================== SETTIGS - DUTIES/BOOKINGS ===========================================
 
 export interface SettingsDutiesBookings {
@@ -431,99 +397,36 @@ export interface SettingsBilling {
 }
 
 
-
-
-// =============================== ADD VEHICLE BY ADMIN ===============================
-
-// {
-//     "message": "Vehicle created successfully",
-//     "data": {
-//         "modelName": "Sedan",
-//         "vehicleNumber": "DL5SAR4359",
-//         "avatar": "https://example.com/car.jpg",
-//         "colour": "Blue",
-//         "fuelType": "Petrol",
-//         "seatingCapacity": 5,
-//         "assignedDriver": "John Doe",
-//         "categoryVehicleGroup": "Standard",
-//         "branches": "City Branch",
-//         "vehicleCode": "V123",
-//         "loan": {
-//             "emiAmount": 500,
-//             "startDate": "2023-01-01T00:00:00.000Z",
-//             "endDate": "2024-01-01T00:00:00.000Z",
-//             "bankName": "XYZ Bank",
-//             "emiDay": 15
-//         },
-//         "registration": {
-//             "registeredOwnerName": "Jane Smith",
-//             "registrationDate": "2022-05-01T00:00:00.000Z"
-//         },
-//         "parts": {
-//             "chassisNumber": "CH123456",
-//             "engineNumber": "EN789012"
-//         },
-//         "insurance": {
-//             "companyName": "ABC Insurance",
-//             "policyNumber": "P123456",
-//             "issueDate": "2022-02-01T00:00:00.000Z",
-//             "premiumAmount": 1000,
-//             "coverAmount": 50000
-//         },
-//         "rto": {
-//             "address": "City RTO Office",
-//             "taxEfficiency": "High",
-//             "expiryDate": "2023-06-01T00:00:00.000Z"
-//         },
-//         "fitness": {
-//             "number": 789,
-//             "expiryDate": "2023-04-01T00:00:00.000Z"
-//         },
-//         "authorization": {
-//             "number": 456,
-//             "expiryDate": "2023-03-01T00:00:00.000Z"
-//         },
-//         "speedGoverner": {
-//             "details": "Installed",
-//             "expiryDate": "2023-07-01T00:00:00.000Z"
-//         },
-//         "puc": {
-//             "number": 123,
-//             "expiryDate": "2023-05-01T00:00:00.000Z"
-//         },
-//         "permits": [
-//             {
-//                 "type": "City Permit - 1",
-//                 "expiryDate": "2023-08-01T00:00:00.000Z",
-//                 "_id": "655b240f4fc3d5812d8dc51e"
-//             },
-//             {
-//                 "type": "City Permit - 2",
-//                 "expiryDate": "2023-08-01T00:00:00.000Z",
-//                 "_id": "655b240f4fc3d5812d8dc51f"
-//             },
-//             {
-//                 "type": "City Permit - 3",
-//                 "expiryDate": "2023-08-01T00:00:00.000Z",
-//                 "_id": "655b240f4fc3d5812d8dc520"
-//             }
-//         ],
-//         "files": [
-//             {
-//                 "fileName": "InsuranceDocument",
-//                 "fileUrl": "https://example.com/files/insurance.pdf",
-//                 "_id": "655b240f4fc3d5812d8dc521"
-//             },
-//             {
-//                 "fileName": "RegistrationDocument",
-//                 "fileUrl": "https://example.com/files/registration.pdf",
-//                 "_id": "655b240f4fc3d5812d8dc522"
-//             }
-//         ],
-//         "createdByAdmin": "655ae8cfe4ce878f915d45e8",
-//         "_id": "655b240f4fc3d5812d8dc51d",
-//         "createdAt": "2023-11-20T09:17:03.688Z",
-//         "updatedAt": "2023-11-20T09:17:03.688Z",
-//         "__v": 0
-//     }
-// }
+// Example Usage:
+const employee: DriverDetails = {
+    name: "John Doe",
+    phone: "9876543210",
+    alternatePhone: "9876543211",
+    pan: "ABCDE1234F",
+    aadharCardNumber: "123456789012",
+    birthdate: "1990-01-01",
+    joiningDate: "2022-01-01",
+    driverAddress: [{ type: "Home", address: "123 Main Street" }],
+    salaryPerMonth: "5000",
+    dailyWages: "100",
+    branches: "Branch A",
+    dailyWorkingHours: "8",
+    workingHours: { start: "09:00 AM", end: "05:00 PM" },
+    allowances: {
+        dailyAllowance: "50",
+        overTimePerHour: "10",
+        outstationAllowancePerDay: "100",
+        outstationOvernightAllowance: "150",
+        sundayAllowance: "20",
+        earlyStartAllowance: "30",
+        nightAllowance: "40",
+        extraDutyAllowance: { secondDuty: "20", thirdDuty: "30", fourthDupt: "40", fifthDuty: "50" },
+    },
+    driverDeductions: [{ name: "Deduction A", amount: false }],
+    licenseInformation: { number: "License123", validUpto: "2023-01-01" },
+    police: { displayCardNumber: "Police123", displayCardExpiryDate: "2023-01-01", verificationNumber: "Verify123", verificationExpiryDate: "2023-01-01" },
+    badge: { badgeNumber: "Badge123", badgeExpiryDate: "2023-01-01" },
+    files: [{ fileName: "File A", fileUrl: "https://example.com/fileA" }],
+    additionalInfo: "Additional info",
+    driverCode: "DriverCode123",
+};

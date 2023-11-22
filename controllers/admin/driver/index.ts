@@ -53,7 +53,7 @@ export const getDriverByIdController = async (req: Request, res: Response) => {
             const response = await getDriverByIdService(req.params.id);
             res.status(200).send({ success: true, message: ResponseMessages?.DRIVER, data: response });
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: error.message });
@@ -77,7 +77,7 @@ export const deleteDriverByIdController = async (req: Request, res: Response) =>
             const response = await deleteDriverByIdService(req.params.id)
             res.status(200).send({ success: true, message: ResponseMessages?.DELETED_DRIVER, data: response });
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
@@ -98,7 +98,7 @@ export const getAllDriverController = async (req: Request, res: Response) => {
             res.clearCookie("access_token");
             res.status(200).send({ success: true, message: ResponseMessages?.DRIVERS, data: response });
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
@@ -133,7 +133,7 @@ export const handleUpdateDriverController = async (req: Request, res: Response) 
             }
             res.status(200).json(updatedDriver);
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });

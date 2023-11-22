@@ -35,3 +35,9 @@ export const settingsBillingService = async (settingsBillingData: SettingsBillin
         throw new Error(error)
     }
 }
+
+export const getSettingsBillingByIdService = async (id: string) => {
+    const response = await billing.findById(id)
+    // .select({ createdByAdmin: 0 });
+    return response;
+}

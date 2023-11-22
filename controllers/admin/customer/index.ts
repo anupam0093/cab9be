@@ -51,7 +51,7 @@ export const getCustomerByIdController = async (req: Request, res: Response) => 
             const response = await getCustomerByIdService(req.params.id);
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMER, data: response });
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: error.message });
@@ -75,7 +75,7 @@ export const deleteCustomerByIdController = async (req: Request, res: Response) 
             const response = await deleteCustomerByIdService(req.params.id)
             res.status(200).send({ success: true, message: ResponseMessages?.DELETED_CUSTOMER, data: response });
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
     } catch (error: any) {
         res.status(400).send({ error: ResponseMessages.INTERNAL_SERVER_ERROR });
@@ -94,8 +94,9 @@ export const getAllCustomerController = async (req: Request, res: Response) => {
         if (loggedInUser?.id == response?.createdByAdmin) {
             const response = await getAllCustomerService(loggedInUser?.id);
             res.status(200).send({ success: true, message: ResponseMessages?.CUSTOMERS, data: response });
-        } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+        }
+        else {
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
 
     } catch (error: any) {
@@ -131,7 +132,7 @@ export const handleUpdateCustomerController = async (req: Request, res: Response
             }
             res.status(200).json(updatedCustomer);
         } else {
-            return res.json({ error: ResponseMessages.USER_NOT_FOUND })
+            return res.json({ error: ResponseMessages.NOT_FOUND })
         }
 
     } catch (error: any) {

@@ -13,7 +13,7 @@ interface BookingDutiesSettings {
     appliedToBooking: { name: string }[];
     citiesTotalCostOnInvoice: { name: string }[];
     minimumGarageStart: { name: string }[];
-    minimumGarageEnd: { name: string }[];
+    minimumGarageEnd: { name: string }[];   
     additionalOptions: {
         option1: string;
         option2: string;
@@ -395,6 +395,8 @@ export interface SettingsBilling {
     fontSizeOfDutySummary: number;
     disableEditingForInvoiceBefore: Date;
 }
+
+// =========================================== SETTIGS - PURCHASE ===========================================
 
 
 // Example Usage:

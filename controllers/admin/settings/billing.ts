@@ -10,10 +10,14 @@ export const handleSettingsBilling = async (req: Request, res: Response) => {
         const userId = req.user?.id;
         const data: SettingsBilling = req.body;
         console.log({ data })
-        const response = await settingsBillingService(data, userId);
 
-        console.log("=== CREATE BILLING RESPONSE === ", { response })
-        res.json({ data: response });
+        if (data?.invoiceDatesNumbering) {
+            const response = await settingsBillingService(data, userId);
+            console.log("=== CREATE BILLING RESPONSE === ", { response })
+            res.json({ data: response });
+        } else {
+            res.json({ error: ResponseMessages.INSUFFICIENT_DATA })
+        }
     } catch (error: any) {
         res.status(500).json({ sucess: false, message: ResponseMessages.INTERNAL_SERVER_ERROR })
     }

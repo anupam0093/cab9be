@@ -19,7 +19,6 @@ export const handleAddVehicle = async (req: Request, res: Response) => {
         }
         const response = await vehicleService(data, userId);
         res.json({ message: ResponseMessages?.CREATED_VEHICLE, data: response });
-
     } catch (error: any) {
         res.status(500).json({ sucess: false, message: error.message })
     }

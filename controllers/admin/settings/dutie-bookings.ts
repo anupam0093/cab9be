@@ -11,6 +11,7 @@ export const handleSettingsDutyBooking = async (req: Request, res: Response) => 
         const userId = req.user?.id;
         const data: SettingsDutiesBookings = req.body;
         console.log({ data })
+
         const response = await settingsDutiesBookings(data, userId);
         console.log("response", { response })
         res.json({ data: response });

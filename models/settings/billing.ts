@@ -92,19 +92,19 @@ const billingSchema = new Schema<SettingsBilling>({
     invoiceDutySummaryColumns: {
         showDutyId: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showDutyType: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         shoeBookedByName: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showPassengerNames: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showVehicleGroupName: {
             type: Boolean,
@@ -112,75 +112,75 @@ const billingSchema = new Schema<SettingsBilling>({
         },
         showVehicleNumber: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showStarDate: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showEndDate: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showStartTime: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showEndTime: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraHour: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showTotalHour: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showSpeedOmeterStartKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showSpeedOmeterEndKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showStartKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showEndKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showTotalKM: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraHourRate: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraKmRate: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraHourCost: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showExtraKmCost: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showConsolidatedBillingTerms: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showSeparatedBillingTerms: {
             type: Boolean,
@@ -192,7 +192,7 @@ const billingSchema = new Schema<SettingsBilling>({
         },
         showPrice: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showQuantityNumberOfDays: {
             type: Boolean,
@@ -200,7 +200,7 @@ const billingSchema = new Schema<SettingsBilling>({
         },
         showTotalPrice: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showCarHireCharge: {
             type: Boolean,

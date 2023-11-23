@@ -34,9 +34,6 @@ export const handleAdminController = async (req: Request, res: Response) => {
         const link = `${process.env.CLIENT_URL}/verify/${jwt}`;
         console.log({ link })
 
-        // const currentDate = Date.now();
-        // console.log({ currentDate })
-
         const sendMagicLink = await sendMagicLinkService(email, link, user?.id);
         // const sendMagicLink = await sendMagicLinkService(email, link);
 

@@ -105,7 +105,7 @@ export interface IDutiesBookings extends Document {
 const newDutiesBookings = new Schema<IDutiesBookings>({
     allowBookings: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     useBookingIdInSMS: {
         type: Boolean,
@@ -113,7 +113,7 @@ const newDutiesBookings = new Schema<IDutiesBookings>({
     },
     roundOffDutySlip: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     autoSendNotification: {
         type: Boolean,
@@ -174,7 +174,7 @@ const newDutiesBookings = new Schema<IDutiesBookings>({
         },
         showFromCity: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         showDropAddress: {
             type: Boolean,

@@ -48,6 +48,8 @@ ResponseMessages.UPDATED_DUTIES_BOOKING = "Duties/Bookings updated successfully.
 ResponseMessages.UPDATED_BILLING = "Billing updated successfully."
 ResponseMessages.FAILED = "Login failed. Invalid credentials.";
 
+ResponseMessages.INSUFFICIENT_DATA = "Insufficient data"
+
 
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';

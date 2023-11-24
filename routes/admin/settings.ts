@@ -3,6 +3,7 @@ import { getDutiesBookingsByIdController, handleSettingsDutyBooking, handleUpdat
 import { isVerified } from "../../middlewares/utils";
 import ROLE from "../../config/roles";
 import { getBillingByIdController, handleSettingsBilling, handleUpdateSettingsBilling } from "../../controllers/admin/settings/billing";
+import { handleSettingsPurchase, handleUpdateSettingsPurchase } from "../../controllers/admin/settings/purchase";
 const router = Router();
 
 // -------------------------------- SETTINGS DUTIES/BOOKINGS ROUTES --------------------------------
@@ -15,6 +16,10 @@ router.get("/duties-bookings/:id", isVerified([ROLE.admin]), getDutiesBookingsBy
 router.post("/billing", isVerified([ROLE.admin]), handleSettingsBilling)
 router.put("/billing", isVerified([ROLE.admin]), handleUpdateSettingsBilling)
 router.get("/billing/:id", isVerified([ROLE.admin]), getBillingByIdController)
+
+// --------------------------------- SETTINGS PURCHASE ---------------------------------------
+router.post("/purchase", isVerified([ROLE.admin]), handleSettingsPurchase)
+router.put("/purchase", isVerified([ROLE.admin]), handleUpdateSettingsPurchase)
 
 
 export default router

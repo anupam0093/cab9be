@@ -13,7 +13,7 @@ interface BookingDutiesSettings {
     appliedToBooking: { name: string }[];
     citiesTotalCostOnInvoice: { name: string }[];
     minimumGarageStart: { name: string }[];
-    minimumGarageEnd: { name: string }[];   
+    minimumGarageEnd: { name: string }[];
     additionalOptions: {
         option1: string;
         option2: string;
@@ -397,6 +397,39 @@ export interface SettingsBilling {
 }
 
 // =========================================== SETTIGS - PURCHASE ===========================================
+export interface SettingPurchase {
+    showPurchaseDutySummary: Boolean,
+    showDutyId: Boolean,
+    showDutyType: Boolean,
+    showCustomerName: Boolean,
+    showBookedByName: Boolean,
+    showPassengerNames: Boolean,
+    showVehicleGroupName: Boolean,
+    showVehicleNumber: Boolean,
+    showStartDate: Boolean,
+    showEndDate: Boolean,
+    showStartTime: Boolean,
+    showEndTime: Boolean,
+    showExtraHour: Boolean,
+    showTotalHour: Boolean,
+    showStartKm: Boolean,
+    showEndKm: Boolean,
+    showTotalKm: Boolean,
+    showExtraHourRate: Boolean,
+    showExtraKmRate: Boolean,
+    showExtraHourCost: Boolean,
+    showExtraKmCost: Boolean,
+    showConsolidatedBillingTerms: Boolean,
+    showSepratedBillingTerms: Boolean,
+    showAllowances: Boolean,
+    showPrice: Boolean,
+    showDutysubtotal: Boolean,
+    showCustomerCarHireCharges: Boolean,
+    showCustomerCarHireChargesIncludingAllowance: Boolean,
+    showCustomerDutySubtotal: Boolean,
+    showCustomerDutySubtotalIncludingAllowance: Boolean
+}
+
 
 
 // Example Usage:

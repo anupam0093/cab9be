@@ -50,6 +50,9 @@ ResponseMessages.FAILED = "Login failed. Invalid credentials.";
 
 ResponseMessages.INSUFFICIENT_DATA = "Insufficient data"
 
+ResponseMessages.UPDATED_PURCHASE = "Purchase updated successfully."
+
+
 
 
 ResponseMessages.EMAIL_REQUIRED = 'Email is required';

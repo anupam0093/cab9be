@@ -383,4 +383,4 @@ const newDutiesBookings = new Schema<IDutiesBookings>({
     createdByAdmin: { ref: "users", type: mongoose.Schema.Types.ObjectId },
 }, { timestamps: true })
 
-export default model<IDutiesBookings>("settings-duties-bookings", newDutiesBookings)
+export default model<IDutiesBookings>("bookings", newDutiesBookings)

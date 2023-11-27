@@ -36,5 +36,5 @@ export const handleUpdateSettingsPurchase = async (req: Request, res: Response) 
         }
     } catch (error: any) {
         res.status(500).json({ success: false, message: ResponseMessages.INTERNAL_SERVER_ERROR })
-    } 
+    }
 }

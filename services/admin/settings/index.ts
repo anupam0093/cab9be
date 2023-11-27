@@ -1,7 +1,9 @@
 import billing from "../../../models/settings/billing";
+import driverAllowance from "../../../models/settings/driver-allowance";
 import dutiesBookings from "../../../models/settings/duties-bookings";
+import notification from "../../../models/settings/notification";
 import purchase from "../../../models/settings/purchase";
-import { SettingPurchase, SettingsBilling, SettingsDutiesBookings } from "../../../types/customer";
+import { DriverAllowance, NotificationsRequestBody, SettingPurchase, SettingsBilling, SettingsDutiesBookings } from "../../../types/customer";
 
 // -------------------------------- SETTINGS DUTIES/BOOKINGS ROUTES --------------------------------
 
@@ -56,3 +58,35 @@ export const settingsPurchase = async (settingsPurchaseData: SettingPurchase, us
         throw new Error(error)
     }
 }
+
+// --------------------------------- SETTINGS DRIVER ALLOWANCE ---------------------------------------
+
+export const settingsDriverAllowance = async (settingsDriverAllowance: DriverAllowance, userId: string) => {
+    try {
+        const response = await driverAllowance.create({
+            ...settingsDriverAllowance,
+            createdByAdmin: userId as string
+        })
+        return response;
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
+// --------------------------------- SETTINGS NOTIFICATIONS ---------------------------------------
+
+export const settingsNotifications = async (notificationData: NotificationsRequestBody, userId: string) => {
+    try {
+        const payload = new notification({
+            ...notificationData,
+            createdByAdmin: userId as string
+        });
+        return await payload.save()
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
+
+
+

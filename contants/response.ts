@@ -44,13 +44,14 @@ ResponseMessages.VEHICLE = "Vehicle";
 ResponseMessages.VEHICLES = "Vehicles";
 ResponseMessages.DELETED_VEHICLE = "Deleted vehicle successfully.";
 ResponseMessages.UPDATED_DUTIES_BOOKING = "Duties/Bookings updated successfully."
-
 ResponseMessages.UPDATED_BILLING = "Billing updated successfully."
 ResponseMessages.FAILED = "Login failed. Invalid credentials.";
-
 ResponseMessages.INSUFFICIENT_DATA = "Insufficient data"
-
 ResponseMessages.UPDATED_PURCHASE = "Purchase updated successfully."
+
+
+ResponseMessages.REQUIRED_FIELDS = "Required fields which you want to update."
+ResponseMessages.ACTIVATED = "Duplicate phone numbers or email addresses found. Data not saved."
 
 
 

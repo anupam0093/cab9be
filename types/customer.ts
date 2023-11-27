@@ -430,6 +430,36 @@ export interface SettingPurchase {
     showCustomerDutySubtotalIncludingAllowance: Boolean
 }
 
+// =========================================== SETTIGS - DRIVER ALLOWANCE ===========================================
+
+interface Driver {
+    selectAllowanceType: string;
+    chargedToCustomer: boolean;
+    amount: number;
+};
+
+export interface DriverAllowance {
+    driverAllowances: Driver[];
+    earlyStartTime: Date;
+    lateEndTime: Date;
+};
+
+// =========================================== SETTIGS - NOTIFICATIONS ===========================================
+
+interface SmsSettings {
+    enabled: boolean;
+    phoneNumbers: string[];
+};
+
+interface EmailSettings {
+    enabled: boolean;
+    emailAddress: string[];
+};
+
+export interface NotificationsRequestBody {
+    sms: SmsSettings;
+    email: EmailSettings;
+};
 
 
 // Example Usage:

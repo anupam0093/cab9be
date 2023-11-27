@@ -1,7 +1,7 @@
 {
-  "name": "cab9-backend",
+  "name": "cabexpert-backend",
   "version": "1.0.0",
-  "description": "Backend for cab9",
+  "description": "Backend for cabexpert",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",

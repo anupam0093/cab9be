@@ -29,10 +29,28 @@ export const handleUpdateSettingsDutiesBookings = async (req: Request, res: Resp
         const response = await dutiesBookings.findOne({ createdByAdmin: id }).select({ createdByAdmin: 1 })
         console.log("=== FETCH ADMIN ID === ", response)
 
+        const data: SettingsDutiesBookings = req.body;
+        console.log({ data })
+
+        const currentId = req.params
+        if (!currentId && !isValidObjectId(id)) {
+            res.status(500).json({ success: false, message: ResponseMessages.ID_REQUIRED });
+        }
+
         if (loggedInUser?.id == response?.createdByAdmin) {
-            const updatedOptions: SettingsDutiesBookings = req.body;
-            const response = await dutiesBookings.findOneAndUpdate({}, { $set: updatedOptions }, { new: true });
-            res.json({ success: true, message: ResponseMessages.UPDATED_DUTIES_BOOKING, response });
+            const schemaId = req.params.id;
+            const result = await dutiesBookings.findByIdAndUpdate(
+                schemaId,
+                data,
+                { new: true }
+            );
+            console.log({ result })
+
+            if (!result) {
+                res.status(404).json({ error: ResponseMessages.NOT_FOUND });
+                return;
+            }
+            res.status(200).json(result);
         } else {
             return res.json({ error: ResponseMessages.USER_NOT_FOUND })
         }
